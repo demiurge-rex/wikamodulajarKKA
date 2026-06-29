@@ -8,355 +8,111 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f1f5f9;
-            color: #0f172a;
-            padding: 1rem;
-            line-height: 1.7;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 24px;
-            padding: 1.5rem 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-        }
-        .header {
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .header h1 {
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
+        body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: #0f172a; padding: 1rem; line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 24px; padding: 1.5rem 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
+        .header { border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .header h1 { font-size: 1.8rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
         .header h1 i { color: #2563eb; }
-        .header .sekolah {
-            font-size: 0.95rem;
-            color: #1e293b;
-            background: #dbeafe;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            display: inline-block;
-            font-weight: 600;
-            margin-top: 0.2rem;
-        }
-        .header .npsn {
-            font-size: 0.8rem;
-            color: #475569;
-            margin-left: 0.5rem;
-        }
-        .info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 0.3rem 1rem;
-            background: #f8fafc;
-            padding: 0.6rem 1rem;
-            border-radius: 10px;
-            margin-top: 0.5rem;
-            font-size: 0.88rem;
-        }
+        .header .sekolah { font-size: 0.95rem; color: #1e293b; background: #dbeafe; padding: 0.2rem 1rem; border-radius: 40px; display: inline-block; font-weight: 600; margin-top: 0.2rem; }
+        .header .npsn { font-size: 0.8rem; color: #475569; margin-left: 0.5rem; }
+        .info { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.3rem 1rem; background: #f8fafc; padding: 0.6rem 1rem; border-radius: 10px; margin-top: 0.5rem; font-size: 0.88rem; }
         .info .lbl { color: #64748b; }
-        .badge {
-            display: inline-block;
-            padding: 0.1rem 0.7rem;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
+        .badge { display: inline-block; padding: 0.1rem 0.7rem; border-radius: 40px; font-size: 0.7rem; font-weight: 600; }
         .badge-s1 { background: #d1fae5; color: #065f46; }
         .badge-s2 { background: #fef3c7; color: #92400e; }
         .badge-blue { background: #dbeafe; color: #1e4f8a; }
         .badge-formatif { background: #dbeafe; color: #1e4f8a; }
         .badge-sumatif { background: #fecaca; color: #991b1b; }
         .badge-lkpd { background: #ede9fe; color: #5b21b6; }
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #eef2f6;
-        }
-        .nav a {
-            padding: 0.4rem 1rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-            border-radius: 40px;
-            color: #475569;
-            text-decoration: none;
-            cursor: pointer;
-            transition: 0.15s;
-            border: 1px solid transparent;
-        }
+        .nav { display: flex; flex-wrap: wrap; gap: 0.2rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #eef2f6; }
+        .nav a { padding: 0.4rem 1rem; font-weight: 600; font-size: 0.8rem; border-radius: 40px; color: #475569; text-decoration: none; cursor: pointer; transition: 0.15s; border: 1px solid transparent; }
         .nav a:hover { background: #eef2f6; }
-        .nav a.active {
-            background: #1e293b;
-            color: white;
-        }
+        .nav a.active { background: #1e293b; color: white; }
         .nav a.cp { background: #dbeafe; color: #1e4f8a; }
         .nav a.cp.active { background: #1e4f8a; color: white; }
-        .nav .divider {
-            color: #94a3b8;
-            padding: 0.2rem 0.2rem;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-        }
+        .nav .divider { color: #94a3b8; padding: 0.2rem 0.2rem; font-size: 0.7rem; display: flex; align-items: center; }
         .panel { display: none; animation: fade 0.2s; }
         .panel.active { display: block; }
         @keyframes fade { 0% { opacity: 0.3; } 100% { opacity: 1; } }
-        .modul {
-            background: #fafcff;
-            border-radius: 16px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e9edf2;
-        }
-        .modul h2 {
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.2rem;
-        }
+        .modul { background: #fafcff; border-radius: 16px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; border: 1px solid #e9edf2; }
+        .modul h2 { font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.2rem; }
         .modul h2 i { color: #2563eb; }
-        .sub {
-            color: #475569;
-            font-size: 0.85rem;
-            border-bottom: 1px dashed #dce3ec;
-            padding-bottom: 0.4rem;
-            margin-bottom: 0.8rem;
-        }
+        .sub { color: #475569; font-size: 0.85rem; border-bottom: 1px dashed #dce3ec; padding-bottom: 0.4rem; margin-bottom: 0.8rem; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .card {
-            background: white;
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        .card h4 {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-bottom: 0.2rem;
-        }
+        .card { background: white; padding: 0.8rem 1rem; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .card h4 { font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.2rem; }
         .card h4 i { color: #2563eb; }
         .card ul, .card p { font-size: 0.85rem; padding-left: 1.2rem; }
         .card ul li { margin-bottom: 0.1rem; }
-        .materi-detail {
-            background: #f8fafc;
-            padding: 1rem 1.4rem;
-            border-radius: 10px;
-            border-left: 4px solid #2563eb;
-            font-size: 0.92rem;
-        }
-        .materi-detail h5 {
-            color: #1e4f8a;
-            margin-top: 0.8rem;
-            font-size: 0.95rem;
-        }
+        .materi-detail { background: #f8fafc; padding: 1rem 1.4rem; border-radius: 10px; border-left: 4px solid #2563eb; font-size: 0.92rem; }
+        .materi-detail h5 { color: #1e4f8a; margin-top: 0.8rem; font-size: 0.95rem; }
         .materi-detail h5:first-of-type { margin-top: 0; }
         .materi-detail ul { padding-left: 1.2rem; margin: 0.2rem 0 0.5rem 0; }
         .materi-detail ul li { margin-bottom: 0.15rem; }
         .materi-detail p { margin-bottom: 0.3rem; }
-        .materi-detail .contoh {
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            margin: 0.3rem 0;
-            font-size: 0.88rem;
-        }
+        .materi-detail .contoh { background: white; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; margin: 0.3rem 0; font-size: 0.88rem; }
         .materi-detail .contoh i { color: #2563eb; }
-        .soal {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-        }
+        .soal { background: #eff6ff; border-left: 4px solid #2563eb; padding: 0.6rem 1.2rem; border-radius: 8px; margin: 0.5rem 0; font-size: 0.9rem; }
         .soal i { color: #2563eb; }
-        .rubrik-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-        }
+        .rubrik-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
         .rubrik-table th { background: #f1f5f9; padding: 0.3rem 0.5rem; border-bottom: 2px solid #d1d9e6; text-align: left; }
         .rubrik-table td { padding: 0.3rem 0.5rem; border-bottom: 1px solid #e9edf2; }
-        .dropdown-wrapper {
-            background: #f8fafc;
-            padding: 0.8rem 1.2rem;
-            border-radius: 10px;
-            border: 1px solid #dce3ec;
-        }
-        .dropdown-item {
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            background: white;
-            overflow: hidden;
-        }
+        .dropdown-wrapper { background: #f8fafc; padding: 0.8rem 1.2rem; border-radius: 10px; border: 1px solid #dce3ec; }
+        .dropdown-item { margin-bottom: 0.5rem; border-radius: 8px; border: 1px solid #e2e8f0; background: white; overflow: hidden; }
         .dropdown-item:last-child { margin-bottom: 0; }
-        .dropdown-header {
-            padding: 0.6rem 1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            font-size: 0.88rem;
-            transition: 0.15s;
-            background: #fafcff;
-        }
+        .dropdown-header { padding: 0.6rem 1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 0.88rem; transition: 0.15s; background: #fafcff; }
         .dropdown-header:hover { background: #eef2f6; }
         .dropdown-header i { transition: 0.2s; }
         .dropdown-header .fa-chevron-down { color: #64748b; font-size: 0.7rem; }
         .dropdown-header.active .fa-chevron-down { transform: rotate(180deg); }
-        .dropdown-body {
-            padding: 0 1rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-        .dropdown-body.open {
-            max-height: 800px;
-            padding: 0.8rem 1rem 1rem 1rem;
-        }
-        .dropdown-body .soal-item {
-            background: #f8fafc;
-            padding: 0.6rem 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 0.4rem;
-            border-left: 3px solid #2563eb;
-            font-size: 0.85rem;
-        }
+        .dropdown-body { padding: 0 1rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .dropdown-body.open { max-height: 1200px; padding: 0.8rem 1rem 1rem 1rem; }
+        .dropdown-body .soal-item { background: #f8fafc; padding: 0.6rem 0.8rem; border-radius: 6px; margin-bottom: 0.4rem; border-left: 3px solid #2563eb; font-size: 0.85rem; }
         .dropdown-body .soal-item:last-child { margin-bottom: 0; }
         .dropdown-body .soal-item strong { color: #1e4f8a; }
-        .dropdown-body .soal-item .jawaban {
-            margin-top: 0.2rem;
-            color: #065f46;
-            font-size: 0.82rem;
-            background: #d1fae5;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            display: inline-block;
-        }
-        .dropdown-body .lkpd-item {
-            background: #f8fafc;
-            padding: 0.6rem 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 0.4rem;
-            border-left: 3px solid #7c3aed;
-            font-size: 0.85rem;
-        }
+        .dropdown-body .soal-item .jawaban { margin-top: 0.2rem; color: #065f46; font-size: 0.82rem; background: #d1fae5; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; }
+        .dropdown-body .lkpd-item { background: #f8fafc; padding: 0.6rem 0.8rem; border-radius: 6px; margin-bottom: 0.4rem; border-left: 3px solid #7c3aed; font-size: 0.85rem; }
         .dropdown-body .lkpd-item:last-child { margin-bottom: 0; }
         .dropdown-body .lkpd-item strong { color: #5b21b6; }
-        .dropdown-body .lkpd-item .format {
-            background: #ede9fe;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            display: inline-block;
-            font-size: 0.75rem;
-            color: #5b21b6;
-            margin-top: 0.2rem;
-        }
-        .tag {
-            display: inline-block;
-            padding: 0.05rem 0.6rem;
-            border-radius: 40px;
-            font-size: 0.65rem;
-            font-weight: 700;
-        }
+        .dropdown-body .lkpd-item .format { background: #ede9fe; padding: 0.2rem 0.6rem; border-radius: 4px; display: inline-block; font-size: 0.75rem; color: #5b21b6; margin-top: 0.2rem; }
+        .lkpd-detail-box { background: #f8fafc; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 0.3rem; font-size: 0.85rem; }
+        .lkpd-detail-box .lkpd-title { font-weight: 700; color: #5b21b6; font-size: 0.9rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; margin-bottom: 0.4rem; }
+        .lkpd-detail-box .lkpd-section { margin: 0.4rem 0; }
+        .lkpd-detail-box .lkpd-section strong { color: #1e293b; }
+        .lkpd-detail-box .lkpd-section ul { padding-left: 1.5rem; margin: 0.2rem 0; }
+        .lkpd-detail-box .lkpd-section ul li { margin-bottom: 0.1rem; }
+        .lkpd-detail-box .lkpd-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin: 0.3rem 0; }
+        .lkpd-detail-box .lkpd-table th, .lkpd-detail-box .lkpd-table td { border: 1px solid #d1d9e6; padding: 0.3rem 0.5rem; text-align: left; }
+        .lkpd-detail-box .lkpd-table th { background: #eef2f6; }
+        .btn-unduh { background: #7c3aed; color: white; border: none; padding: 0.2rem 1rem; border-radius: 40px; font-weight: 600; font-size: 0.75rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.3rem; }
+        .btn-unduh:hover { background: #6d28d9; }
+        .tag { display: inline-block; padding: 0.05rem 0.6rem; border-radius: 40px; font-size: 0.65rem; font-weight: 700; }
         .tag-formatif { background: #dbeafe; color: #1e4f8a; }
         .tag-sumatif { background: #fecaca; color: #991b1b; }
         .tag-lkpd { background: #ede9fe; color: #5b21b6; }
-        .btn-pdf {
-            background: #dc2626;
-            color: white;
-            border: none;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
+        .btn-pdf { background: #dc2626; color: white; border: none; padding: 0.3rem 1.2rem; border-radius: 40px; font-weight: 600; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; }
         .btn-pdf:hover { background: #b91c1c; }
         .flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
         .mt-1 { margin-top: 0.5rem; }
         .mt-2 { margin-top: 1rem; }
         .cp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .cp-item {
-            background: white;
-            padding: 0.8rem 1rem;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-        .cp-item .name {
-            font-weight: 700;
-            color: #1e4f8a;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 0.3rem;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-        }
+        .cp-item { background: white; padding: 0.8rem 1rem; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .cp-item .name { font-weight: 700; color: #1e4f8a; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; margin-bottom: 0.3rem; font-size: 0.9rem; }
         .cp-item .name i { color: #2563eb; }
         .cp-item .cptext { font-size: 0.85rem; }
         .cp-item .atp { font-size: 0.8rem; padding-left: 1.2rem; color: #334155; }
-        @media (max-width: 700px) {
-            .grid-2, .cp-grid { grid-template-columns: 1fr; }
-            .container { padding: 1rem; }
-            .header h1 { font-size: 1.4rem; }
-        }
-        .footer {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #64748b;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 1rem;
-            margin-top: 1.5rem;
-        }
-        .footer .sekolah-footer {
-            font-weight: 600;
-            color: #1e293b;
-        }
-        .waktu {
-            background: #f8fafc;
-            padding: 0.3rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            display: inline-block;
-            border: 1px solid #e2e8f0;
-        }
-        .semester-info {
-            background: #f0fdf4;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            border: 1px solid #bbf7d0;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-        }
+        @media (max-width: 700px) { .grid-2, .cp-grid { grid-template-columns: 1fr; } .container { padding: 1rem; } .header h1 { font-size: 1.4rem; } }
+        .footer { text-align: center; font-size: 0.8rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 1rem; margin-top: 1.5rem; }
+        .footer .sekolah-footer { font-weight: 600; color: #1e293b; }
+        .waktu { background: #f8fafc; padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.8rem; display: inline-block; border: 1px solid #e2e8f0; }
+        .semester-info { background: #f0fdf4; padding: 0.5rem 1rem; border-radius: 10px; border: 1px solid #bbf7d0; margin-bottom: 0.8rem; font-size: 0.9rem; }
         .semester-info i { color: #065f46; }
-        .alokasi-waktu {
-            background: #f1f5f9;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            margin: 0.3rem 0;
-            font-size: 0.85rem;
-            border-left: 3px solid #2563eb;
-        }
+        .alokasi-waktu { background: #f1f5f9; padding: 0.5rem 1rem; border-radius: 8px; margin: 0.3rem 0; font-size: 0.85rem; border-left: 3px solid #2563eb; }
         .alokasi-waktu i { color: #2563eb; }
+        @media print { .btn-pdf, .btn-unduh, .nav, .dropdown-header { display: none; } .dropdown-body { max-height: none !important; padding: 0.5rem 1rem !important; } .dropdown-item { border: 1px solid #ddd; margin-bottom: 0.5rem; } .container { box-shadow: none; padding: 0.5rem; } }
+        .soal-lengkap { background: #f0fdf4; padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #065f46; margin-top: 0.3rem; font-size: 0.85rem; }
+        .soal-lengkap strong { color: #065f46; }
+        .kunci { background: #fef3c7; padding: 0.3rem 0.6rem; border-radius: 4px; display: inline-block; font-size: 0.8rem; margin-top: 0.2rem; }
     </style>
 </head>
 <body>
@@ -364,9 +120,7 @@
 
     <!-- HEADER -->
     <div class="header">
-        <h1>
-            <i class="fas fa-robot"></i> Modul Ajar Koding & Kecerdasan Artifisial
-        </h1>
+        <h1><i class="fas fa-robot"></i> Modul Ajar Koding & Kecerdasan Artifisial</h1>
         <div style="margin-top:0.2rem;">
             <span class="sekolah"><i class="fas fa-school"></i> SMK Widya Karya Purwokerto</span>
             <span class="npsn"><i class="fas fa-id-card"></i> NPSN: 20301914</span>
@@ -401,103 +155,57 @@
         <div class="modul">
             <h2><i class="fas fa-brain"></i> 1. Berpikir Komputasional <span class="badge badge-s1">Semester 1</span></h2>
             <div class="sub">Minggu 1-4 · 8 pertemuan (16 JP) · PBL, Diskusi</div>
-
-            <div class="semester-info">
-                <i class="fas fa-info-circle"></i> <b>Semester 1 (24 minggu):</b> Elemen 1-3 · Alokasi: Elemen 1 (4 minggu), Elemen 2 (4 minggu), Elemen 3 (4 minggu) + Cadangan/Proyek (12 minggu)
-            </div>
-
-            <div class="alokasi-waktu">
-                <i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)
-            </div>
+            <div class="semester-info"><i class="fas fa-info-circle"></i> <b>Semester 1 (24 minggu):</b> Elemen 1-3 · Alokasi: Elemen 1 (4 minggu), Elemen 2 (4 minggu), Elemen 3 (4 minggu) + Cadangan/Proyek (12 minggu)</div>
+            <div class="alokasi-waktu"><i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)</div>
 
             <div class="materi-detail">
                 <h4 style="color:#1e4f8a;margin-bottom:0.5rem;"><i class="fas fa-book-open"></i> Uraian Materi</h4>
                 <p><strong>A. Pengertian Berpikir Komputasional</strong></p>
-                <p>Berpikir komputasional adalah suatu pendekatan atau metode dalam memecahkan masalah dengan cara yang logis, sistematis, dan terstruktur, sehingga solusi yang dihasilkan dapat dipahami dan dijalankan oleh manusia maupun mesin (komputer). Keterampilan ini tidak hanya berguna dalam dunia teknologi, tetapi juga dapat diterapkan dalam kehidupan sehari-hari untuk menyelesaikan berbagai persoalan secara efektif dan efisien.</p>
-
+                <p>Berpikir komputasional adalah pendekatan pemecahan masalah secara logis, sistematis, dan efisien yang dapat dijalankan oleh manusia maupun mesin. Keterampilan ini menjadi penting karena permasalahan yang dihadapi generasi sekarang semakin kompleks dan tidak terlepas dari penggunaan teknologi. Berpikir komputasional bukanlah tentang pemrograman, melainkan tentang cara berpikir untuk menyelesaikan masalah dengan pendekatan yang terstruktur.</p>
                 <h5>B. Empat Pilar Berpikir Komputasional</h5>
-                <p><strong>1. Dekomposisi (Decomposition)</strong></p>
-                <p>Dekomposisi adalah kemampuan untuk memecah suatu masalah yang besar dan kompleks menjadi bagian-bagian yang lebih kecil dan lebih mudah dikelola.</p>
-                <div class="contoh"><i class="fas fa-lightbulb"></i> <strong>Contoh:</strong> Membuat website dapat dipecah menjadi: desain UI, frontend, backend, database, keamanan.</div>
-
-                <p><strong>2. Pengenalan Pola (Pattern Recognition)</strong></p>
-                <p>Pengenalan pola adalah kemampuan untuk melihat persamaan, kemiripan, atau keteraturan dalam suatu masalah atau sekumpulan data.</p>
-                <div class="contoh"><i class="fas fa-lightbulb"></i> <strong>Contoh:</strong> Penjualan meningkat setiap akhir pekan → prediksi.</div>
-
-                <p><strong>3. Abstraksi (Abstraction)</strong></p>
-                <p>Abstraksi adalah kemampuan untuk mengambil informasi yang penting dan relevan dari suatu masalah, serta mengabaikan detail-detail yang tidak diperlukan.</p>
-                <div class="contoh"><i class="fas fa-lightbulb"></i> <strong>Contoh:</strong> Peta jalan fokus pada jalur utama, bukan detail pohon.</div>
-
-                <p><strong>4. Algoritma (Algorithm Design)</strong></p>
-                <p>Algoritma adalah serangkaian langkah-langkah logis dan terstruktur yang disusun secara berurutan untuk menyelesaikan suatu masalah.</p>
-                <div class="contoh"><i class="fas fa-lightbulb"></i> <strong>Contoh:</strong> Resep masakan adalah bentuk algoritma.</div>
-
+                <p><strong>1. Dekomposisi:</strong> Memecah masalah besar menjadi bagian-bagian kecil yang lebih mudah dikelola. Dengan memecah masalah, kita dapat memahami setiap bagian secara mendalam.</p>
+                <p><strong>2. Pengenalan Pola:</strong> Mencari kemiripan atau kesamaan dalam data atau masalah untuk menemukan solusi yang lebih cepat.</p>
+                <p><strong>3. Abstraksi:</strong> Mengambil informasi penting dan mengabaikan detail yang tidak relevan, fokus pada inti permasalahan.</p>
+                <p><strong>4. Algoritma:</strong> Menyusun langkah-langkah logis dan terstruktur secara berurutan untuk menyelesaikan masalah.</p>
                 <h5>C. Manfaat Berpikir Komputasional</h5>
-                <ul>
-                    <li>Membantu menyelesaikan masalah kompleks dengan lebih terstruktur.</li>
-                    <li>Melatih kemampuan berpikir logis dan sistematis.</li>
-                    <li>Meningkatkan kemampuan dalam merancang solusi yang efisien.</li>
-                    <li>Membantu dalam pengambilan keputusan yang lebih baik.</li>
-                    <li>Menjadi fondasi penting dalam mempelajari pemrograman dan teknologi.</li>
-                </ul>
+                <ul><li>Membantu menyelesaikan masalah kompleks dengan lebih terstruktur.</li><li>Melatih kemampuan berpikir logis dan sistematis.</li><li>Meningkatkan kemampuan merancang solusi efisien.</li><li>Menjadi fondasi penting dalam mempelajari pemrograman.</li></ul>
             </div>
 
             <div class="grid-2 mt-1">
-                <div class="card"><h4><i class="fas fa-flag-checkered"></i> CP</h4>
-                    <ul><li>Memecah masalah kompleks menjadi bagian-bagian kecil.</li><li>Mengenali pola dan membuat abstraksi dari suatu masalah.</li><li>Menyusun algoritma sederhana dalam bentuk pseudocode dan flowchart.</li><li>Menerapkan berpikir komputasional dalam kehidupan sehari-hari.</li></ul>
-                </div>
-                <div class="card"><h4><i class="fas fa-road"></i> ATP</h4>
-                    <ul>
-                        <li><strong>TP.1.1</strong> Menjelaskan konsep dekomposisi dan memberi contoh.</li>
-                        <li><strong>TP.1.2</strong> Mengidentifikasi pola pada data atau masalah.</li>
-                        <li><strong>TP.1.3</strong> Membuat abstraksi dengan mengabaikan detail tidak relevan.</li>
-                        <li><strong>TP.1.4</strong> Menyusun algoritma dalam bentuk pseudocode.</li>
-                        <li><strong>TP.1.5</strong> Menggambar flowchart untuk menyelesaikan masalah.</li>
-                        <li><strong>TP.1.6</strong> Menerapkan 4 pilar berpikir komputasional pada studi kasus.</li>
-                    </ul>
-                </div>
+                <div class="card"><h4><i class="fas fa-flag-checkered"></i> CP</h4><ul><li>Memecah masalah kompleks menjadi bagian-bagian kecil.</li><li>Mengenali pola dan membuat abstraksi.</li><li>Menyusun algoritma pseudocode dan flowchart.</li><li>Menerapkan dalam kehidupan sehari-hari.</li></ul></div>
+                <div class="card"><h4><i class="fas fa-road"></i> ATP</h4><ul><li><strong>TP.1.1</strong> Menjelaskan dekomposisi.</li><li><strong>TP.1.2</strong> Mengidentifikasi pola.</li><li><strong>TP.1.3</strong> Membuat abstraksi.</li><li><strong>TP.1.4</strong> Menyusun pseudocode.</li><li><strong>TP.1.5</strong> Menggambar flowchart.</li><li><strong>TP.1.6</strong> Menerapkan 4 pilar.</li></ul></div>
             </div>
 
             <div class="card mt-1">
                 <h4><i class="fas fa-clipboard-list"></i> Rubrik Penilaian</h4>
-                <table class="rubrik-table">
-                    <tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
-                    <tr><td>Dekomposisi</td><td>Belum bisa memecah masalah</td><td>Memecah dengan bantuan</td><td>Memecah secara mandiri</td><td>Memecah dan mengurutkan prioritas</td></tr>
-                    <tr><td>Pengenalan Pola</td><td>Tidak mengenali pola</td><td>Mengenali pola sederhana</td><td>Mengenali pola kompleks</td><td>Mengenali dan memprediksi pola</td></tr>
-                    <tr><td>Abstraksi</td><td>Belum bisa mengabstraksi</td><td>Abstraksi dengan bantuan</td><td>Abstraksi tepat</td><td>Abstraksi efisien dan kreatif</td></tr>
-                    <tr><td>Algoritma</td><td>Langkah tidak runtut</td><td>Langkah runtut namun kurang efisien</td><td>Algoritma efisien</td><td>Algoritma optimal dan jelas</td></tr>
-                </table>
+                <table class="rubrik-table"><tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+                <tr><td>Dekomposisi</td><td>Belum bisa</td><td>Dengan bantuan</td><td>Mandiri</td><td>Prioritas</td></tr>
+                <tr><td>Pola</td><td>Tidak</td><td>Sederhana</td><td>Kompleks</td><td>Memprediksi</td></tr>
+                <tr><td>Abstraksi</td><td>Belum</td><td>Bantuan</td><td>Tepat</td><td>Efisien</td></tr>
+                <tr><td>Algoritma</td><td>Tidak runtut</td><td>Runtut</td><td>Efisien</td><td>Optimal</td></tr></table>
             </div>
 
-            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana kamu merencanakan perjalanan ke 3 kota dalam 5 hari menggunakan dekomposisi dan algoritma?"</div>
+            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana merencanakan perjalanan ke 3 kota dalam 5 hari menggunakan dekomposisi dan algoritma?"</div>
 
             <div class="dropdown-wrapper mt-1">
                 <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:#1e293b;"><i class="fas fa-tasks"></i> Asesmen & Lembar Kerja</h4>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Buat flowchart untuk membuat jus buah (3 langkah utama)!<div class="jawaban">💡 Kunci: Flowchart dengan simbol oval, persegi, jajaran genjang, oval.</div></div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Lakukan dekomposisi masalah "menyusun jadwal piket kelas" menjadi minimal 5 sub-masalah!<div class="jawaban">💡 Kunci: Jumlah siswa, hari piket, tugas, koordinasi, evaluasi.</div></div>
+                        <div class="soal-item"><strong>Mandiri:</strong> Buat flowchart untuk membuat jus buah!<div class="jawaban">💡 Kunci: Simbol oval (mulai), persegi (proses), jajaran genjang (output), oval (selesai).</div></div>
+                        <div class="soal-item"><strong>Kelompok:</strong> Dekomposisi masalah "jadwal piket kelas"!<div class="jawaban">💡 Kunci: Jumlah siswa, hari piket, tugas, koordinasi, evaluasi.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Buat pseudocode dan flowchart untuk menentukan KKM (nilai ≥ 75) dari 3 mata pelajaran!<div class="jawaban">💡 Kunci: Pseudocode INPUT-IF-ELSE-OUTPUT.</div></div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Presentasikan solusi komputasional untuk masalah di lingkungan sekolah.<div class="jawaban">💡 Kunci: Identifikasi masalah, dekomposisi, pola, abstraksi, algoritma.</div></div>
+                        <div class="soal-item"><strong>Soal 1 (Mandiri):</strong> Buat pseudocode dan flowchart untuk menentukan apakah sebuah bilangan genap atau ganjil!<div class="jawaban">💡 Kunci: INPUT angka, IF angka % 2 == 0 THEN OUTPUT "Genap" ELSE OUTPUT "Ganjil". Flowchart dengan simbol keputusan.</div></div>
+                        <div class="soal-item"><strong>Soal 2 (Mandiri):</strong> Buat pseudocode dan flowchart untuk menghitung luas persegi panjang (p × l)!<div class="jawaban">💡 Kunci: INPUT p, l; luas = p * l; OUTPUT luas. Flowchart dengan simbol proses.</div></div>
+                        <div class="soal-item"><strong>Soal 3 (Kelompok):</strong> Presentasikan solusi komputasional untuk masalah di lingkungan sekolah!<div class="jawaban">💡 Kunci: Identifikasi masalah, dekomposisi, pola, abstraksi, algoritma solusi.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik <span style="font-size:0.7rem;color:#64748b;font-weight:400;">(klik untuk lihat detail)</span></span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
                         <div class="lkpd-item"><strong>LKPD 1.1</strong> — Dekomposisi & Pola (Kelompok)<div class="format">📄 5 masalah di sekolah, pecah jadi sub-masalah, temukan pola.</div></div>
                         <div class="lkpd-item"><strong>LKPD 1.2</strong> — Abstraksi & Algoritma (Individu)<div class="format">📄 Kasus "memasak nasi", abstraksi, pseudocode, flowchart.</div></div>
@@ -505,47 +213,72 @@
                     </div>
                 </div>
             </div>
-
-            <div class="flex mt-2">
-                <span class="waktu"><i class="far fa-calendar-alt"></i> Semester 1 · Minggu 1-4 (8 pertemuan · 16 JP)</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button>
-            </div>
+            <div class="flex mt-2"><span class="waktu"><i class="far fa-calendar-alt"></i> Semester 1 · Minggu 1-4 (8 pertemuan · 16 JP)</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button></div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PANEL 2 : LITERASI DIGITAL -->
+    <!-- PANEL 2 : LITERASI DIGITAL (URAIAN DIPERPANJANG) -->
     <!-- ============================================================ -->
     <div id="panel2" class="panel">
         <div class="modul">
             <h2><i class="fas fa-laptop"></i> 2. Literasi Digital <span class="badge badge-s1">Semester 1</span></h2>
             <div class="sub">Minggu 5-8 · 8 pertemuan (16 JP) · Simulasi, Studi Kasus</div>
-
-            <div class="semester-info">
-                <i class="fas fa-info-circle"></i> <b>Semester 1 (24 minggu):</b> Elemen 1-3 · Alokasi: Elemen 1 (4 minggu), Elemen 2 (4 minggu), Elemen 3 (4 minggu) + Cadangan/Proyek (12 minggu)
-            </div>
-
-            <div class="alokasi-waktu">
-                <i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)
-            </div>
+            <div class="semester-info"><i class="fas fa-info-circle"></i> <b>Semester 1 (24 minggu):</b> Elemen 1-3 · Alokasi: Elemen 1 (4 minggu), Elemen 2 (4 minggu), Elemen 3 (4 minggu) + Cadangan/Proyek (12 minggu)</div>
+            <div class="alokasi-waktu"><i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)</div>
 
             <div class="materi-detail">
                 <h4 style="color:#1e4f8a;margin-bottom:0.5rem;"><i class="fas fa-book-open"></i> Uraian Materi</h4>
 
                 <p><strong>A. Pengertian Literasi Digital</strong></p>
-                <p>Literasi digital adalah kemampuan untuk menggunakan teknologi informasi dan komunikasi secara cerdas, aman, dan produktif. Literasi digital tidak hanya sebatas mampu mengoperasikan perangkat teknologi, tetapi juga mencakup pemahaman tentang etika, keamanan, dan dampak sosial dari penggunaan teknologi dalam kehidupan sehari-hari.</p>
+                <p>Literasi digital adalah kemampuan untuk menggunakan teknologi informasi dan komunikasi secara cerdas, aman, dan produktif. Literasi digital tidak hanya sebatas mampu mengoperasikan perangkat teknologi, tetapi juga mencakup pemahaman tentang etika, keamanan, dan dampak sosial dari penggunaan teknologi dalam kehidupan sehari-hari. Di era digital saat ini, literasi digital menjadi keterampilan dasar yang harus dimiliki setiap individu agar dapat berpartisipasi secara aktif dan bertanggung jawab dalam masyarakat digital.</p>
+                <p>Menurut UNESCO, literasi digital mencakup kemampuan untuk mengakses, mengelola, memahami, mengintegrasikan, mengkomunikasikan, mengevaluasi, dan menciptakan informasi secara aman dan tepat melalui teknologi digital. Literasi digital bukan hanya tentang keterampilan teknis, tetapi juga tentang sikap kritis dan etis dalam menggunakan teknologi.</p>
 
                 <h5>B. Komponen Utama Literasi Digital</h5>
-                <p><strong>1. Keterampilan Digital:</strong> Penguasaan perangkat keras, lunak, dan aplikasi daring.</p>
-                <p><strong>2. Budaya Digital:</strong> Pemahaman tentang interaksi sosial di dunia maya.</p>
-                <p><strong>3. Etika Digital:</strong> Prinsip moral dalam menggunakan teknologi.</p>
-                <p><strong>4. Keamanan Digital:</strong> Perlindungan data dan kewaspadaan terhadap ancaman.</p>
+
+                <p><strong>1. Keterampilan Digital (Digital Skills)</strong></p>
+                <p>Keterampilan digital mencakup kemampuan mengoperasikan perangkat keras (hardware) seperti komputer, laptop, dan smartphone; menggunakan perangkat lunak (software) seperti sistem operasi, aplikasi perkantoran, dan aplikasi khusus; serta memanfaatkan aplikasi daring seperti email, media sosial, dan cloud storage. Keterampilan ini juga mencakup kemampuan mencari, mengelola, dan mengevaluasi informasi yang ditemukan di internet. Beberapa keterampilan digital dasar yang perlu dikuasai antara lain: menggunakan mesin pencari (search engine) secara efektif, membuat dan mengelola dokumen digital, menggunakan aplikasi kolaborasi daring, dan memahami cara kerja berbagai platform digital seperti Google Workspace, Microsoft Office, dan aplikasi produktivitas lainnya.</p>
+
+                <p><strong>2. Budaya Digital (Digital Culture)</strong></p>
+                <p>Budaya digital berkaitan dengan pemahaman tentang bagaimana teknologi membentuk interaksi sosial dan cara kita berpartisipasi di dunia maya. Ini mencakup pemahaman tentang norma-norma yang berlaku di komunitas daring, cara berkomunikasi yang efektif, dan kemampuan untuk beradaptasi dengan perkembangan teknologi yang terus berubah. Budaya digital juga mencakup kesadaran akan jejak digital (digital footprint) yang kita tinggalkan. Setiap aktivitas daring yang kita lakukan, seperti mengunggah foto, menulis komentar, atau mencari informasi, meninggalkan jejak yang dapat dilacak dan dapat mempengaruhi reputasi kita di masa depan. Oleh karena itu, penting untuk bijak dalam berbagi konten di dunia maya.</p>
+
+                <p><strong>3. Etika Digital (Digital Ethics)</strong></p>
+                <p>Etika digital adalah prinsip-prinsip moral yang harus diterapkan dalam penggunaan teknologi. Ini mencakup menghormati hak privasi orang lain, tidak menyebarkan hoaks atau informasi palsu, menjaga netiket (etika berinternet), serta menghindari perilaku cyberbullying. Etika digital juga mencakup tanggung jawab atas konten yang kita bagikan dan dampaknya terhadap orang lain. Beberapa prinsip etika digital yang penting: kejujuran dalam menyampaikan informasi, menghargai hak cipta dan kekayaan intelektual, menjaga kerahasiaan data pribadi, dan bersikap sopan dalam berkomunikasi daring. Di Indonesia, etika digital juga diatur dalam Undang-Undang Informasi dan Transaksi Elektronik (UU ITE).</p>
+
+                <p><strong>4. Keamanan Digital (Digital Security)</strong></p>
+                <p>Keamanan digital berkaitan dengan perlindungan data pribadi dan perangkat dari ancaman digital. Ini mencakup penggunaan password yang kuat, penerapan autentikasi dua faktor (2FA), kewaspadaan terhadap phising dan malware, serta pemahaman tentang pentingnya menjaga privasi di dunia maya. Ancaman digital yang umum meliputi: pencurian identitas, peretasan akun, penyebaran virus, penipuan daring, dan penyalahgunaan data pribadi. Langkah-langkah keamanan yang perlu diterapkan: menggunakan password yang unik untuk setiap akun, tidak mengklik tautan mencurigakan, memperbarui perangkat lunak secara berkala, dan menggunakan aplikasi keamanan seperti antivirus dan firewall.</p>
 
                 <h5>C. Mengapa Literasi Digital Penting</h5>
                 <ul>
-                    <li><strong>Proteksi:</strong> Melindungi diri dari ancaman digital.</li>
-                    <li><strong>Hak:</strong> Memahami hak-hak digital.</li>
-                    <li><strong>Pemberdayaan:</strong> Mampu menghasilkan karya produktif.</li>
+                    <li><strong>Proteksi (Safeguard):</strong> Melindungi diri dari ancaman digital seperti penipuan, pencurian data, dan cyberbullying. Individu yang literat digital lebih waspada terhadap modus-modus penipuan daring dan tahu cara melindungi data pribadinya.</li>
+                    <li><strong>Hak (Right):</strong> Memahami hak-hak digital termasuk kebebasan berekspresi, hak atas privasi, dan hak atas kekayaan intelektual. Hak-hak ini diatur dalam berbagai peraturan perundang-undangan seperti UU ITE di Indonesia dan GDPR di Eropa.</li>
+                    <li><strong>Pemberdayaan (Empowerment):</strong> Mampu menghasilkan karya produktif, berpartisipasi dalam ekonomi digital, dan mengembangkan kewirausahaan berbasis teknologi. Literasi digital membuka peluang untuk menciptakan lapangan kerja baru dan meningkatkan daya saing di era global.</li>
+                </ul>
+
+                <h5>D. Dampak Positif dan Negatif Teknologi Digital</h5>
+                <p><strong>Dampak Positif:</strong></p>
+                <ul>
+                    <li>Memudahkan akses informasi dan pengetahuan melalui internet dan perpustakaan digital.</li>
+                    <li>Meningkatkan efisiensi dan produktivitas dalam berbagai bidang seperti pendidikan, bisnis, dan pemerintahan.</li>
+                    <li>Memungkinkan komunikasi dan kolaborasi jarak jauh melalui video conference dan platform kolaborasi seperti Zoom, Google Meet, dan Microsoft Teams.</li>
+                    <li>Membuka peluang ekonomi baru seperti e-commerce, freelancing, dan ekonomi kreatif berbasis digital.</li>
+                </ul>
+                <p><strong>Dampak Negatif:</strong></p>
+                <ul>
+                    <li>Kecanduan gadget dan media sosial yang dapat mengganggu produktivitas dan kesehatan mental.</li>
+                    <li>Penyebaran hoaks dan informasi palsu yang dapat memecah belah masyarakat.</li>
+                    <li>Ancaman keamanan data dan privasi akibat kebocoran data dan peretasan.</li>
+                    <li>Cyberbullying dan perundungan daring yang dapat merusak kesehatan mental korban.</li>
+                </ul>
+
+                <h5>E. Tips Menjadi Warga Digital yang Baik</h5>
+                <ul>
+                    <li>Selalu verifikasi kebenaran informasi sebelum membagikannya (cek fakta).</li>
+                    <li>Jaga privasi dengan tidak membagikan data pribadi secara sembarangan.</li>
+                    <li>Gunakan password yang kuat dan berbeda untuk setiap akun.</li>
+                    <li>Bersikap sopan dan menghormati pendapat orang lain di dunia maya.</li>
+                    <li>Batasi waktu penggunaan gadget dan media sosial.</li>
+                    <li>Laporkan konten atau perilaku yang melanggar hukum atau etika.</li>
                 </ul>
             </div>
 
@@ -556,35 +289,27 @@
 
             <div class="card"><h4>Rubrik</h4><table class="rubrik-table"><tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Pengetahuan tools</td><td>Kurang</td><td>Cukup</td><td>Baik</td><td>Sangat mahir</td></tr><tr><td>Etika & privasi</td><td>Tidak paham</td><td>Paham sebagian</td><td>Paham dan menerapkan</td><td>Mengedukasi orang lain</td></tr></table></div>
 
-            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Apa yang kamu lakukan jika menerima pesan dari nomor tidak dikenal yang meminta data pribadi?"</div>
+            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Apa yang kamu lakukan jika menerima pesan dari nomor tidak dikenal yang meminta data pribadi? Jelaskan langkah-langkah yang harus diambil!"</div>
 
             <div class="dropdown-wrapper mt-1">
                 <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:#1e293b;"><i class="fas fa-tasks"></i> Asesmen & Lembar Kerja</h4>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Buat password kuat (minimal 8 karakter, kombinasi huruf, angka, simbol) dan jelaskan cara kerjanya!</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Analisis kasus phising yang pernah terjadi di Indonesia!</div>
+                        <div class="soal-item"><strong>Mandiri:</strong> Buat password kuat (minimal 8 karakter, kombinasi huruf, angka, simbol) dan jelaskan cara kerjanya!<div class="jawaban">💡 Kunci: Contoh "P@ssw0rd#2024" - kombinasi huruf besar/kecil, angka, simbol.</div></div>
+                        <div class="soal-item"><strong>Kelompok:</strong> Analisis kasus phising yang pernah terjadi di Indonesia!<div class="jawaban">💡 Kunci: Contoh kasus phising mengatasnamakan bank, e-commerce, atau institusi pemerintah.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Tulis esai tentang hak digital dan perlindungan data pribadi di era digital!</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Buat poster kampanye keamanan digital (digital poster) dan presentasikan!</div>
+                        <div class="soal-item"><strong>Soal 1 (Mandiri):</strong> Tuliskan 5 tips menjadi warga digital yang baik dan bertanggung jawab!<div class="jawaban">💡 Kunci: (1) Verifikasi informasi, (2) Jaga privasi, (3) Password kuat, (4) Sopan di dunia maya, (5) Batasi waktu gadget.</div></div>
+                        <div class="soal-item"><strong>Soal 2 (Mandiri):</strong> Apa yang dimaksud dengan jejak digital (digital footprint)? Berikan contoh!<div class="jawaban">💡 Kunci: Jejak digital adalah rekam jejak aktivitas kita di internet. Contoh: postingan media sosial, komentar, riwayat pencarian.</div></div>
+                        <div class="soal-item"><strong>Soal 3 (Kelompok):</strong> Buat poster kampanye keamanan digital (digital poster) dan presentasikan!<div class="jawaban">💡 Kunci: Poster memuat tips keamanan digital, desain menarik, menggunakan Canva.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik <span style="font-size:0.7rem;color:#64748b;font-weight:400;">(klik untuk lihat detail)</span></span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
                         <div class="lkpd-item"><strong>LKPD 2.1</strong> (Individu) — Identifikasi aplikasi & fitur keamanannya.<div class="format">📄 Tabel identifikasi 5 aplikasi dengan fitur keamanan.</div></div>
                         <div class="lkpd-item"><strong>LKPD 2.2</strong> (Kelompok) — Simulasi kasus pelanggaran data & solusi.<div class="format">📄 Studi kasus + diskusi solusi.</div></div>
@@ -593,48 +318,52 @@
                 </div>
             </div>
 
-            <div class="flex mt-2">
-                <span class="waktu"><i class="far fa-calendar-alt"></i> Semester 1 · Minggu 5-8 (8 pertemuan · 16 JP)</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button>
-            </div>
+            <div class="flex mt-2"><span class="waktu"><i class="far fa-calendar-alt"></i> Semester 1 · Minggu 5-8 (8 pertemuan · 16 JP)</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button></div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PANEL 3 : ETIKA & LITERASI AI -->
+    <!-- PANEL 3 : ETIKA & LITERASI AI (URAIAN DIPERPANJANG) -->
     <!-- ============================================================ -->
     <div id="panel3" class="panel">
         <div class="modul">
             <h2><i class="fas fa-scale-balanced"></i> 3. Etika & Literasi AI <span class="badge badge-s1">Semester 1</span></h2>
             <div class="sub">Minggu 9-12 · 8 pertemuan (16 JP) · Debat, Refleksi</div>
-
-            <div class="semester-info">
-                <i class="fas fa-info-circle"></i> <b>Semester 1 (24 minggu):</b> Elemen 1-3 · Alokasi: Elemen 1 (4 minggu), Elemen 2 (4 minggu), Elemen 3 (4 minggu) + Cadangan/Proyek (12 minggu)
-            </div>
-
-            <div class="alokasi-waktu">
-                <i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)
-            </div>
+            <div class="semester-info"><i class="fas fa-info-circle"></i> <b>Semester 1 (24 minggu):</b> Elemen 1-3 · Alokasi: Elemen 1 (4 minggu), Elemen 2 (4 minggu), Elemen 3 (4 minggu) + Cadangan/Proyek (12 minggu)</div>
+            <div class="alokasi-waktu"><i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)</div>
 
             <div class="materi-detail">
                 <h4 style="color:#1e4f8a;margin-bottom:0.5rem;"><i class="fas fa-book-open"></i> Uraian Materi</h4>
 
                 <p><strong>A. Pengertian Kecerdasan Artifisial (AI)</strong></p>
-                <p>Kecerdasan Artifisial atau AI adalah bidang ilmu komputer yang berfokus pada pengembangan sistem dan mesin yang mampu meniru kemampuan intelektual manusia.</p>
+                <p>Kecerdasan Artifisial atau AI (Artificial Intelligence) adalah bidang ilmu komputer yang berfokus pada pengembangan sistem dan mesin yang mampu meniru kemampuan intelektual manusia. Kemampuan ini mencakup belajar (learning), bernalar (reasoning), mempersepsi (perception), memahami bahasa (language understanding), dan mengambil keputusan (decision making). AI bertujuan untuk menciptakan sistem yang dapat bekerja secara cerdas dan mandiri, meskipun tidak selalu secerdas manusia. Konsep AI pertama kali diperkenalkan oleh John McCarthy pada tahun 1956 dalam konferensi Dartmouth, dan sejak saat itu AI terus berkembang pesat hingga menjadi salah satu teknologi paling transformatif di abad ke-21.</p>
 
                 <h5>B. Jenis-jenis AI</h5>
+                <p><strong>1. Narrow AI (Weak AI):</strong> AI yang dirancang untuk melakukan satu tugas spesifik dengan sangat baik. Sebagian besar AI yang kita gunakan saat ini termasuk dalam kategori ini. Contoh: asisten virtual (Siri, Google Assistant), chatbot, sistem rekomendasi (Netflix, Spotify), dan mobil otonom (Tesla). Narrow AI tidak memiliki kesadaran atau pemahaman umum, dan hanya bisa melakukan tugas yang telah dirancang untuknya.</p>
+                <p><strong>2. General AI (Strong AI):</strong> AI yang memiliki kemampuan intelektual setara dengan manusia. General AI dapat memahami, belajar, dan menerapkan pengetahuan di berbagai bidang yang berbeda. Saat ini, General AI masih dalam tahap penelitian dan belum terwujud sepenuhnya. Para ilmuwan masih berdebat tentang kapan dan apakah General AI akan terwujud.</p>
+                <p><strong>3. Super AI (Superintelligence):</strong> AI yang memiliki kemampuan intelektual melebihi manusia terbaik di semua bidang, termasuk kreativitas ilmiah, kebijaksanaan sosial, dan kemampuan kognitif umum. Super AI masih merupakan konsep teoritis dan menjadi topik diskusi di kalangan ilmuwan dan filsuf. Beberapa ahli seperti Nick Bostrom memperingatkan bahwa Super AI dapat menjadi ancaman eksistensial bagi manusia jika tidak dikendalikan dengan baik.</p>
+
+                <h5>C. Cara Kerja AI</h5>
                 <ul>
-                    <li><strong>Narrow AI:</strong> AI untuk tugas spesifik (chatbot, rekomendasi).</li>
-                    <li><strong>General AI:</strong> AI setara manusia (masih penelitian).</li>
-                    <li><strong>Super AI:</strong> AI melebihi manusia (konsep teoritis).</li>
+                    <li><strong>Machine Learning (ML):</strong> Metode di mana AI belajar dari data tanpa diprogram secara eksplisit. ML menggunakan algoritma untuk menemukan pola dalam data dan membuat prediksi atau keputusan berdasarkan pola tersebut. Ada tiga jenis utama ML: supervised learning (belajar dengan data berlabel), unsupervised learning (belajar dengan data tidak berlabel), dan reinforcement learning (belajar melalui trial and error).</li>
+                    <li><strong>Deep Learning:</strong> Cabang dari ML yang menggunakan jaringan saraf tiruan (neural networks) dengan banyak lapisan (deep neural networks) untuk memproses data. Deep Learning sangat efektif untuk pengenalan gambar, suara, dan bahasa alami. Arsitektur deep learning seperti Convolutional Neural Networks (CNN) dan Recurrent Neural Networks (RNN) telah mencapai hasil yang mengesankan dalam berbagai aplikasi.</li>
+                    <li><strong>Natural Language Processing (NLP):</strong> Bidang AI yang fokus pada interaksi antara komputer dan bahasa manusia. NLP digunakan dalam chatbot, penerjemahan bahasa, dan analisis sentimen. Teknik NLP seperti tokenisasi, stemming, dan lemmatization digunakan untuk memproses teks, sementara model seperti BERT dan GPT telah mencapai pemahaman bahasa yang sangat canggih.</li>
+                    <li><strong>Computer Vision:</strong> Bidang AI yang memungkinkan komputer untuk memahami dan menginterpretasikan gambar dan video. Digunakan dalam pengenalan wajah, kendaraan otonom, dan deteksi objek. Teknik seperti CNN dan transfer learning telah membuat computer vision menjadi salah satu bidang AI yang paling sukses secara komersial.</li>
                 </ul>
 
-                <h5>C. Dilema Etika dalam AI</h5>
+                <h5>D. Dilema Etika dalam AI</h5>
+                <p><strong>1. Paradoks Privasi dan Personalisasi:</strong> AI membutuhkan data untuk memberikan layanan yang dipersonalisasi, tetapi pengumpulan data yang masif dapat mengancam privasi individu. Misalnya, sistem rekomendasi di e-commerce mengumpulkan data pembelian dan penelusuran pengguna. Solusi: literasi AI yang baik dan kebijakan privasi yang transparan. Regulasi seperti GDPR di Eropa dan UU PDP di Indonesia berupaya melindungi privasi data pengguna.</p>
+                <p><strong>2. Dilema Bias dan Keadilan:</strong> AI belajar dari data pelatihan. Jika data tersebut mengandung bias sosial, AI akan memperkuat dan memperbesar bias tersebut. Contoh: sistem rekrutmen Amazon yang bias terhadap perempuan karena dilatih dengan data sejarah rekrutmen yang didominasi pria. Kasus COMPAS di AS juga menunjukkan bahwa algoritma penilaian risiko kriminal dapat bias terhadap kelompok minoritas.</p>
+                <p><strong>3. Pertukaran Transparansi dan Kompleksitas:</strong> Model AI yang kompleks (seperti deep learning) sering kali kurang transparan (black box). Sulit untuk menjelaskan bagaimana AI mengambil suatu keputusan. Model sederhana seperti decision tree lebih transparan tetapi mungkin kurang akurat. Penelitian di bidang Explainable AI (XAI) bertujuan untuk membuat AI lebih dapat dijelaskan.</p>
+                <p><strong>4. Dilema Otonomi-Kendali:</strong> AI yang semakin otonom dapat beroperasi di luar kendali manusia. Contoh: sistem autopilot Tesla yang mengharuskan pengemudi siap mengambil alih kendali. Pertanyaan etis: sampai sejauh mana AI boleh mengambil keputusan tanpa intervensi manusia? Dalam konteks militer, penggunaan senjata otonom memicu perdebatan serius tentang etika dan tanggung jawab.</p>
+                <p><strong>5. Dampak Sosial dan Ekonomi:</strong> AI berpotensi mengubah pasar kerja dengan mengotomatisasi banyak pekerjaan. Diperkirakan jutaan pekerjaan akan hilang, tetapi pekerjaan baru juga akan tercipta. Isu kesenjangan digital dan akses terhadap teknologi AI juga menjadi perhatian penting.</p>
+
+                <h5>E. Isu Etis AI dalam Pendidikan</h5>
                 <ul>
-                    <li><strong>Paradoks Privasi:</strong> Personalisasi vs privasi.</li>
-                    <li><strong>Bias & Keadilan:</strong> AI perkuat bias sosial.</li>
-                    <li><strong>Transparansi:</strong> Model kompleks sulit dijelaskan.</li>
-                    <li><strong>Otonomi-Kendali:</strong> AI di luar kendali manusia.</li>
+                    <li><strong>Privasi Data Siswa:</strong> Pengumpulan data oleh sistem AI di sekolah harus dilindungi dan digunakan secara bertanggung jawab. Sekolah harus memastikan bahwa data siswa tidak disalahgunakan.</li>
+                    <li><strong>Bias Algoritmik:</strong> Sistem penilaian otomatis dapat mengandung bias yang merugikan kelompok tertentu. Penting untuk mengaudit algoritma secara berkala untuk mendeteksi bias.</li>
+                    <li><strong>Transparansi:</strong> Bagaimana AI mengambil keputusan dalam konteks pendidikan harus dapat dijelaskan dan dipertanggungjawabkan. Siswa dan orang tua berhak mengetahui bagaimana keputusan dibuat.</li>
+                    <li><strong>Kesenjangan Digital:</strong> Akses terhadap teknologi AI tidak merata, yang dapat memperlebar kesenjangan pendidikan. Pemerintah dan institusi pendidikan perlu memastikan akses yang setara.</li>
                 </ul>
             </div>
 
@@ -645,35 +374,27 @@
 
             <div class="card"><h4>Rubrik</h4><table class="rubrik-table"><tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Pemahaman AI</td><td>Kurang</td><td>Cukup</td><td>Baik</td><td>Mendalam</td></tr><tr><td>Analisis etis</td><td>Tidak kritis</td><td>Kritis terbatas</td><td>Kritis & solutif</td><td>Memberi rekomendasi</td></tr></table></div>
 
-            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana AI bisa mendiskriminasi seseorang? Berikan contoh dan solusi!"</div>
+            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana AI bisa mendiskriminasi seseorang? Berikan contoh nyata dan usulkan solusi untuk mengatasinya!"</div>
 
             <div class="dropdown-wrapper mt-1">
                 <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:#1e293b;"><i class="fas fa-tasks"></i> Asesmen & Lembar Kerja</h4>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Baca artikel tentang bias AI, tulis ringkasan 1 paragraf!</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Debat "AI untuk rekrutmen: adil atau tidak?" (pro/kontra).</div>
+                        <div class="soal-item"><strong>Mandiri:</strong> Baca artikel tentang bias AI, tulis ringkasan 1 paragraf!<div class="jawaban">💡 Kunci: Ringkasan mencakup penyebab bias, contoh kasus, dan solusi.</div></div>
+                        <div class="soal-item"><strong>Kelompok:</strong> Debat "AI untuk rekrutmen: adil atau tidak?" (pro/kontra).<div class="jawaban">💡 Kunci: Pro: efisien, objektif. Kontra: bias, kurang humanis.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Tulis esai reflektif (500 kata) tentang dampak AI bagi masyarakat!</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Buat video pendek (2-3 menit) tentang etika AI!</div>
+                        <div class="soal-item"><strong>Soal 1 (Mandiri):</strong> Jelaskan 3 dilema etika utama dalam pengembangan dan penggunaan AI!<div class="jawaban">💡 Kunci: (1) Privasi vs personalisasi, (2) Bias & keadilan, (3) Transparansi vs kompleksitas, (4) Otonomi vs kendali.</div></div>
+                        <div class="soal-item"><strong>Soal 2 (Mandiri):</strong> Berikan contoh nyata kasus bias AI di dunia nyata dan jelaskan solusinya!<div class="jawaban">💡 Kunci: Contoh Amazon AI rekrutmen bias gender. Solusi: audit data, diversifikasi tim pengembang, transparansi algoritma.</div></div>
+                        <div class="soal-item"><strong>Soal 3 (Kelompok):</strong> Buat video pendek (2-3 menit) tentang etika AI!<div class="jawaban">💡 Kunci: Video memuat penjelasan AI, isu etis, dan rekomendasi.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik <span style="font-size:0.7rem;color:#64748b;font-weight:400;">(klik untuk lihat detail)</span></span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
                         <div class="lkpd-item"><strong>LKPD 3.1</strong> — Analisis kasus (Amazon AI, COMPAS).<div class="format">📄 Lembar analisis kasus + pertanyaan refleksi.</div></div>
                         <div class="lkpd-item"><strong>LKPD 3.2</strong> — Debat: pro/kontra AI di bidang pendidikan.<div class="format">📄 Lembar persiapan debat (argumen pro/kontra).</div></div>
@@ -681,44 +402,64 @@
                 </div>
             </div>
 
-            <div class="flex mt-2">
-                <span class="waktu"><i class="far fa-calendar-alt"></i> Semester 1 · Minggu 9-12 (8 pertemuan · 16 JP)</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button>
-            </div>
+            <div class="flex mt-2"><span class="waktu"><i class="far fa-calendar-alt"></i> Semester 1 · Minggu 9-12 (8 pertemuan · 16 JP)</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button></div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PANEL 4 : PEMANFAATAN & PENGEMBANGAN AI -->
+    <!-- PANEL 4 : PEMANFAATAN & PENGEMBANGAN AI (URAIAN DIPERPANJANG) -->
     <!-- ============================================================ -->
     <div id="panel4" class="panel">
         <div class="modul">
             <h2><i class="fas fa-wand-magic-sparkles"></i> 4. Pemanfaatan & Pengembangan AI <span class="badge badge-s2">Semester 2</span></h2>
             <div class="sub">Minggu 1-4 · 8 pertemuan (16 JP) · Proyek, Eksplorasi</div>
-
-            <div class="semester-info" style="background:#fffbeb;border-color:#fcd34d;">
-                <i class="fas fa-info-circle" style="color:#92400e;"></i> <b style="color:#92400e;">Semester 2 (22 minggu):</b> Elemen 4-6 · Alokasi: Elemen 4 (4 minggu), Elemen 5 (4 minggu), Elemen 6 (4 minggu) + Cadangan/Proyek (10 minggu)
-            </div>
-
-            <div class="alokasi-waktu">
-                <i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)
-            </div>
+            <div class="semester-info" style="background:#fffbeb;border-color:#fcd34d;"><i class="fas fa-info-circle" style="color:#92400e;"></i> <b style="color:#92400e;">Semester 2 (22 minggu):</b> Elemen 4-6 · Alokasi: Elemen 4 (4 minggu), Elemen 5 (4 minggu), Elemen 6 (4 minggu) + Cadangan/Proyek (10 minggu)</div>
+            <div class="alokasi-waktu"><i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)</div>
 
             <div class="materi-detail">
                 <h4 style="color:#1e4f8a;margin-bottom:0.5rem;"><i class="fas fa-book-open"></i> Uraian Materi</h4>
 
                 <p><strong>A. Pemanfaatan AI dalam Kehidupan Sehari-hari</strong></p>
+
+                <p><strong>1. Chatbot dan Asisten Virtual</strong></p>
+                <p>Chatbot adalah program komputer yang dirancang untuk mensimulasikan percakapan dengan pengguna manusia, terutama melalui internet. Chatbot dapat digunakan dalam berbagai konteks seperti layanan pelanggan, pendidikan, dan kesehatan. Asisten virtual seperti Siri (Apple), Google Assistant, dan Alexa (Amazon) adalah bentuk chatbot yang lebih canggih dengan kemampuan suara dan integrasi dengan berbagai perangkat. ChatGPT dari OpenAI adalah contoh chatbot generatif yang dapat menghasilkan teks yang sangat mirip dengan tulisan manusia, bahkan mampu menulis puisi, kode program, dan esai. Perkembangan Large Language Models (LLMs) seperti GPT-4, Claude, dan Gemini telah membawa chatbot ke tingkat yang lebih tinggi dengan kemampuan memahami konteks dan bernalar dengan lebih baik.</p>
+
+                <p><strong>2. Sistem Rekomendasi (Recommendation Systems)</strong></p>
+                <p>Sistem rekomendasi adalah algoritma yang menganalisis perilaku pengguna untuk memberikan rekomendasi yang dipersonalisasi. Sistem ini banyak digunakan di platform digital:</p>
                 <ul>
-                    <li><strong>Chatbot:</strong> ChatGPT, Siri, Google Assistant.</li>
-                    <li><strong>Sistem Rekomendasi:</strong> Netflix, Spotify, e-commerce.</li>
-                    <li><strong>AI Generatif:</strong> Midjourney, ChatGPT, ElevenLabs.</li>
+                    <li><strong>Netflix:</strong> Merekomendasikan film dan serial berdasarkan riwayat tontonan dan rating pengguna. Netflix menggunakan algoritma canggih yang mempertimbangkan berbagai faktor termasuk genre, aktor, dan preferensi pengguna.</li>
+                    <li><strong>Spotify:</strong> Merekomendasikan lagu dan playlist berdasarkan preferensi musik dan riwayat putar. Fitur "Discover Weekly" Spotify sangat populer dan menggunakan collaborative filtering untuk menemukan lagu baru yang sesuai dengan selera pengguna.</li>
+                    <li><strong>E-commerce (Shopee, Tokopedia, Amazon):</strong> Merekomendasikan produk berdasarkan riwayat pembelian dan penelusuran. Sistem ini membantu meningkatkan konversi penjualan dengan menampilkan produk yang relevan.</li>
                 </ul>
+                <p>Sistem rekomendasi bekerja dengan dua pendekatan utama: <strong>collaborative filtering</strong> (berdasarkan perilaku pengguna lain yang serupa) dan <strong>content-based filtering</strong> (berdasarkan kemiripan konten). Banyak platform menggunakan pendekatan hybrid yang menggabungkan kedua metode untuk hasil yang lebih baik.</p>
+
+                <p><strong>3. AI Generatif (Generative AI)</strong></p>
+                <p>AI generatif adalah jenis AI yang mampu menghasilkan konten baru seperti teks, gambar, suara, dan video. AI generatif menggunakan model seperti Generative Adversarial Networks (GANs) dan Large Language Models (LLMs). Contoh aplikasi:</p>
+                <ul>
+                    <li><strong>ChatGPT (OpenAI):</strong> Menghasilkan teks, menjawab pertanyaan, menulis kode, dan menerjemahkan bahasa. GPT-4 telah mencapai kemampuan yang mengesankan dalam berbagai tugas bahasa.</li>
+                    <li><strong>Midjourney / DALL-E (OpenAI):</strong> Menghasilkan gambar dari deskripsi teks. Pengguna dapat membuat ilustrasi, desain produk, dan karya seni hanya dengan mengetikkan deskripsi.</li>
+                    <li><strong>ElevenLabs:</strong> Menghasilkan suara yang sangat mirip dengan suara manusia. Teknologi ini digunakan untuk voice-over, audiobook, dan aplikasi aksesibilitas.</li>
+                    <li><strong>Sora (OpenAI):</strong> Model AI yang dapat menghasilkan video dari deskripsi teks, membuka kemungkinan baru dalam pembuatan konten video.</li>
+                </ul>
+
+                <p><strong>4. Computer Vision</strong></p>
+                <p>Computer Vision adalah bidang AI yang memungkinkan komputer untuk memahami dan menginterpretasikan gambar dan video. Aplikasi computer vision meliputi:</p>
+                <ul>
+                    <li><strong>Pengenalan wajah (Face Recognition):</strong> Digunakan untuk keamanan dan autentikasi (misal: Face ID iPhone, sistem keamanan bandara).</li>
+                    <li><strong>Deteksi objek (Object Detection):</strong> Untuk kendaraan otonom (mobil self-driving) dan sistem keamanan.</li>
+                    <li><strong>Analisis citra medis:</strong> Untuk diagnosis penyakit melalui scan MRI, CT, dan X-ray. AI dapat mendeteksi kelainan dengan akurasi yang setara atau bahkan melebihi dokter manusia.</li>
+                    <li><strong>Monitoring real-time:</strong> Misalnya Transjakarta menggunakan computer vision untuk memantau kepadatan penumpang dan mengoptimalkan rute.</li>
+                </ul>
+
                 <h5>B. Pengembangan AI Sederhana</h5>
-                <ul>
-                    <li><strong>Chatbot Rule-based:</strong> Menggunakan aturan if-else.</li>
-                    <li><strong>Prompt Engineering:</strong> Merancang prompt efektif.</li>
-                    <li><strong>Teachable Machine:</strong> ML tanpa coding.</li>
-                </ul>
+                <p><strong>1. Chatbot Rule-based</strong></p>
+                <p>Chatbot rule-based adalah chatbot yang merespons berdasarkan aturan yang telah ditentukan sebelumnya (if-else). Chatbot ini tidak menggunakan machine learning tetapi cukup efektif untuk skenario sederhana. Contoh: chatbot layanan pelanggan yang menjawab pertanyaan umum seperti jam operasional, alamat, atau informasi produk. Meskipun sederhana, chatbot rule-based dapat mengotomatisasi hingga 70% interaksi pelanggan yang bersifat rutin.</p>
+
+                <p><strong>2. Prompt Engineering</strong></p>
+                <p>Prompt engineering adalah seni dan ilmu merancang prompt (instruksi) yang efektif untuk mendapatkan output yang diinginkan dari AI generatif. Prompt yang baik harus jelas, spesifik, dan memberikan konteks yang cukup. Teknik-teknik prompt engineering meliputi: zero-shot prompting (tanpa contoh), few-shot prompting (dengan contoh), chain-of-thought prompting (meminta penalaran), dan role prompting (memberikan peran).</p>
+
+                <p><strong>3. Membuat Model ML Sederhana</strong></p>
+                <p>Peserta didik dapat mulai mengembangkan AI sederhana dengan menggunakan platform seperti Teachable Machine (Google) yang memungkinkan pembuatan model machine learning tanpa coding, atau Google Colab untuk menulis kode Python dengan akses GPU.</p>
             </div>
 
             <div class="grid-2">
@@ -728,35 +469,27 @@
 
             <div class="card"><h4>Rubrik</h4><table class="rubrik-table"><tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Pemanfaatan AI</td><td>Pasif</td><td>Dengan bantuan</td><td>Mandiri</td><td>Mengintegrasikan</td></tr><tr><td>Pengembangan solusi</td><td>Belum</td><td>Konsep sederhana</td><td>Prototipe fungsi dasar</td><td>Prototipe inovatif</td></tr></table></div>
 
-            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana chatbot dapat membantu UMKM meningkatkan layanan pelanggan?"</div>
+            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana chatbot dapat membantu UMKM meningkatkan layanan pelanggan? Rancang konsep chatbot untuk toko kecil!"</div>
 
             <div class="dropdown-wrapper mt-1">
                 <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:#1e293b;"><i class="fas fa-tasks"></i> Asesmen & Lembar Kerja</h4>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Eksplorasi ChatGPT atau Canva AI, buat 3 prompt menarik!</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Analisis sistem rekomendasi (Netflix, Spotify, dll).</div>
+                        <div class="soal-item"><strong>Mandiri:</strong> Eksplorasi ChatGPT atau Canva AI, buat 3 prompt menarik!<div class="jawaban">💡 Kunci: Contoh prompt: (1) "Buat puisi tentang alam", (2) "Jelaskan cara membuat kue", (3) "Tulis kode Python untuk kalkulator".</div></div>
+                        <div class="soal-item"><strong>Kelompok:</strong> Analisis sistem rekomendasi (Netflix, Spotify, dll).<div class="jawaban">💡 Kunci: Analisis mencakup cara kerja, kelebihan, dan kekurangan sistem rekomendasi.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Proyek Kelompok:</strong> Buat prototipe chatbot sederhana (rule-based) atau AI generatif untuk membuat poster!</div>
-                        <div class="soal-item"><strong>Mandiri:</strong> Tulis laporan proyek (deskripsi, tujuan, cara kerja, kesimpulan).</div>
+                        <div class="soal-item"><strong>Soal 1 (Mandiri):</strong> Jelaskan 3 jenis pemanfaatan AI dalam kehidupan sehari-hari beserta contohnya!<div class="jawaban">💡 Kunci: (1) Chatbot (ChatGPT), (2) Sistem rekomendasi (Netflix), (3) AI generatif (Midjourney).</div></div>
+                        <div class="soal-item"><strong>Soal 2 (Mandiri):</strong> Apa yang dimaksud dengan prompt engineering? Berikan contoh prompt yang baik!<div class="jawaban">💡 Kunci: Prompt engineering adalah merancang instruksi efektif untuk AI. Contoh: "Buatlah cerita pendek tentang persahabatan dengan 3 paragraf."</div></div>
+                        <div class="soal-item"><strong>Soal 3 (Proyek Kelompok):</strong> Buat prototipe chatbot sederhana (rule-based) atau AI generatif untuk membuat poster!<div class="jawaban">💡 Kunci: Chatbot dengan aturan if-else, atau prompt AI untuk membuat desain poster.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik <span style="font-size:0.7rem;color:#64748b;font-weight:400;">(klik untuk lihat detail)</span></span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
                         <div class="lkpd-item"><strong>LKPD 4.1</strong> — Panduan prompt engineering.<div class="format">📄 Lembar praktik membuat prompt efektif.</div></div>
                         <div class="lkpd-item"><strong>LKPD 4.2</strong> — Rancang flowchart sistem rekomendasi sederhana.<div class="format">📄 Gambar flowchart + penjelasan.</div></div>
@@ -765,49 +498,59 @@
                 </div>
             </div>
 
-            <div class="flex mt-2">
-                <span class="waktu"><i class="far fa-calendar-alt"></i> Semester 2 · Minggu 1-4 (8 pertemuan · 16 JP)</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button>
-            </div>
+            <div class="flex mt-2"><span class="waktu"><i class="far fa-calendar-alt"></i> Semester 2 · Minggu 1-4 (8 pertemuan · 16 JP)</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button></div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PANEL 5 : ALGORITMA & PEMROGRAMAN -->
+    <!-- PANEL 5 : ALGORITMA & PEMROGRAMAN (URAIAN DIPERPANJANG) -->
     <!-- ============================================================ -->
     <div id="panel5" class="panel">
         <div class="modul">
             <h2><i class="fas fa-code"></i> 5. Algoritma & Pemrograman <span class="badge badge-s2">Semester 2</span></h2>
             <div class="sub">Minggu 5-8 · 8 pertemuan (16 JP) · Praktik Lab</div>
-
-            <div class="semester-info" style="background:#fffbeb;border-color:#fcd34d;">
-                <i class="fas fa-info-circle" style="color:#92400e;"></i> <b style="color:#92400e;">Semester 2 (22 minggu):</b> Elemen 4-6 · Alokasi: Elemen 4 (4 minggu), Elemen 5 (4 minggu), Elemen 6 (4 minggu) + Cadangan/Proyek (10 minggu)
-            </div>
-
-            <div class="alokasi-waktu">
-                <i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)
-            </div>
+            <div class="semester-info" style="background:#fffbeb;border-color:#fcd34d;"><i class="fas fa-info-circle" style="color:#92400e;"></i> <b style="color:#92400e;">Semester 2 (22 minggu):</b> Elemen 4-6 · Alokasi: Elemen 4 (4 minggu), Elemen 5 (4 minggu), Elemen 6 (4 minggu) + Cadangan/Proyek (10 minggu)</div>
+            <div class="alokasi-waktu"><i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)</div>
 
             <div class="materi-detail">
                 <h4 style="color:#1e4f8a;margin-bottom:0.5rem;"><i class="fas fa-book-open"></i> Uraian Materi</h4>
 
                 <p><strong>A. Pengertian Algoritma</strong></p>
-                <p>Algoritma adalah serangkaian langkah-langkah logis dan terstruktur untuk menyelesaikan masalah.</p>
+                <p>Algoritma adalah serangkaian langkah-langkah logis dan terstruktur yang disusun secara berurutan untuk menyelesaikan suatu masalah. Algoritma adalah fondasi dari semua program komputer. Sebuah algoritma yang baik harus memenuhi kriteria: jelas (unambiguous), terbatas (finite), efektif (effective), serta memiliki input dan output. Kata "algoritma" berasal dari nama ilmuwan Persia, Al-Khwarizmi, yang hidup pada abad ke-9 dan memberikan kontribusi besar dalam bidang matematika dan astronomi.</p>
 
                 <h5>B. Bentuk-bentuk Algoritma</h5>
-                <ul>
-                    <li><strong>Pseudocode:</strong> Deskripsi bahasa manusia terstruktur.</li>
-                    <li><strong>Flowchart:</strong> Representasi grafis algoritma.</li>
-                    <li><strong>Python:</strong> Implementasi kode.</li>
-                </ul>
+                <p><strong>1. Pseudocode</strong></p>
+                <p>Pseudocode adalah deskripsi algoritma yang ditulis dalam bahasa manusia yang terstruktur menyerupai kode pemrograman. Pseudocode tidak mengikuti sintaks bahasa pemrograman tertentu, sehingga mudah dipahami oleh siapa saja. Pseudocode digunakan untuk merancang logika program sebelum diimplementasikan dalam bahasa pemrograman. Keuntungan pseudocode adalah fleksibel, mudah dibaca, dan dapat dengan mudah diubah menjadi kode program.</p>
+                <div class="contoh"><i class="fas fa-code"></i> <strong>Contoh Pseudocode:</strong><br>
+                <code style="background:#eef2f6;padding:0.3rem 0.6rem;border-radius:4px;display:inline-block;margin-top:0.2rem;">
+                INPUT angka<br>
+                IF angka % 2 == 0 THEN<br>
+                &nbsp;&nbsp;OUTPUT "Bilangan Genap"<br>
+                ELSE<br>
+                &nbsp;&nbsp;OUTPUT "Bilangan Ganjil"<br>
+                ENDIF
+                </code></div>
+
+                <p><strong>2. Flowchart</strong></p>
+                <p>Flowchart adalah representasi grafis dari algoritma menggunakan simbol-simbol standar. Simbol-simbol utama: oval (start/end), persegi panjang (proses), belah ketupat (keputusan), jajaran genjang (input/output), dan panah (alur). Flowchart memudahkan visualisasi alur logika program dan sangat membantu dalam mengkomunikasikan logika program kepada orang lain.</p>
+
+                <p><strong>3. Bahasa Pemrograman (Python)</strong></p>
+                <p>Python adalah bahasa pemrograman tingkat tinggi yang populer dan mudah dipelajari. Python memiliki sintaks yang bersih dan mudah dibaca, sehingga cocok untuk pemula. Python juga memiliki banyak library yang memudahkan pengembangan berbagai aplikasi. Keunggulan Python: sintaks sederhana, open source, cross-platform, komunitas besar, dan banyak digunakan di industri.</p>
 
                 <h5>C. Dasar-dasar Python</h5>
-                <ul>
-                    <li>Variabel & Tipe Data: int, float, str, bool</li>
-                    <li>Input/Output: input(), print()</li>
-                    <li>Percabangan: if-elif-else</li>
-                    <li>Perulangan: for, while</li>
-                </ul>
+                <p><strong>1. Variabel dan Tipe Data:</strong> int (bilangan bulat), float (desimal), str (teks), bool (True/False), list (kumpulan data).</p>
+                <p><strong>2. Input dan Output:</strong> print() untuk output, input() untuk menerima masukan pengguna.</p>
+                <p><strong>3. Percabangan (Conditional):</strong> if-elif-else untuk pengambilan keputusan.</p>
+                <p><strong>4. Perulangan (Loops):</strong> for (iterasi terbatas) dan while (iterasi berdasarkan kondisi).</p>
+                <div class="contoh"><i class="fas fa-code"></i> <strong>Contoh Program Python:</strong><br>
+                <code style="background:#eef2f6;padding:0.3rem 0.6rem;border-radius:4px;display:inline-block;margin-top:0.2rem;">
+                # Program menentukan kelulusan<br>
+                nilai = int(input("Masukkan nilai: "))<br>
+                if nilai >= 75:<br>
+                &nbsp;&nbsp;print("Lulus")<br>
+                else:<br>
+                &nbsp;&nbsp;print("Tidak Lulus")
+                </code></div>
             </div>
 
             <div class="grid-2">
@@ -817,35 +560,27 @@
 
             <div class="card"><h4>Rubrik</h4><table class="rubrik-table"><tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Pseudocode/Flowchart</td><td>Kurang runtut</td><td>Runtut tapi salah</td><td>Runtut & benar</td><td>Efisien & jelas</td></tr><tr><td>Kode Python</td><td>Tidak jalan</td><td>Jalan dengan error</td><td>Jalan benar</td><td>Optimal & terstruktur</td></tr></table></div>
 
-            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Buat pseudocode dan flowchart untuk menentukan bilangan prima!"</div>
+            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Buat pseudocode dan flowchart untuk menentukan apakah suatu bilangan adalah prima atau bukan! Kemudian implementasikan dalam Python."</div>
 
             <div class="dropdown-wrapper mt-1">
                 <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:#1e293b;"><i class="fas fa-tasks"></i> Asesmen & Lembar Kerja</h4>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Buat flowchart konversi suhu (Celcius ke Fahrenheit).</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Buat program Python menghitung luas bangun datar.</div>
+                        <div class="soal-item"><strong>Mandiri:</strong> Buat flowchart konversi suhu (Celcius ke Fahrenheit)!<div class="jawaban">💡 Kunci: INPUT C, F = (C × 9/5) + 32, OUTPUT F.</div></div>
+                        <div class="soal-item"><strong>Kelompok:</strong> Buat program Python menghitung luas bangun datar (persegi, segitiga, lingkaran)!<div class="jawaban">💡 Kunci: Gunakan fungsi dan percabangan untuk memilih bangun datar.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Mandiri:</strong> Program Python kalkulator sederhana (+, -, ×, ÷).</div>
-                        <div class="soal-item"><strong>Kelompok:</strong> Aplikasi Python dengan percabangan & perulangan (sistem login sederhana).</div>
+                        <div class="soal-item"><strong>Soal 1 (Mandiri):</strong> Tuliskan pseudocode dan flowchart untuk menentukan bilangan genap/ganjil!<div class="jawaban">💡 Kunci: INPUT n, IF n%2==0 OUTPUT "Genap" ELSE "Ganjil".</div></div>
+                        <div class="soal-item"><strong>Soal 2 (Mandiri):</strong> Buat program Python kalkulator sederhana (+, -, ×, ÷) dengan menu pilihan!<div class="jawaban">💡 Kunci: Gunakan input() dan percabangan if-elif-else untuk memilih operasi.</div></div>
+                        <div class="soal-item"><strong>Soal 3 (Kelompok):</strong> Buat aplikasi Python dengan percabangan & perulangan (misal: sistem login sederhana, program daftar nilai).<div class="jawaban">💡 Kunci: Sistem login dengan username/password, atau program input nilai dengan perulangan.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik <span style="font-size:0.7rem;color:#64748b;font-weight:400;">(klik untuk lihat detail)</span></span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
                         <div class="lkpd-item"><strong>LKPD 5.1</strong> — Latihan pseudocode & flowchart (3 kasus).<div class="format">📄 3 kasus dengan ruang jawaban pseudocode dan flowchart.</div></div>
                         <div class="lkpd-item"><strong>LKPD 5.2</strong> — Python: variabel, input, output (5 soal).<div class="format">📄 5 soal latihan coding dengan template.</div></div>
@@ -854,51 +589,52 @@
                 </div>
             </div>
 
-            <div class="flex mt-2">
-                <span class="waktu"><i class="far fa-calendar-alt"></i> Semester 2 · Minggu 5-8 (8 pertemuan · 16 JP)</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button>
-            </div>
+            <div class="flex mt-2"><span class="waktu"><i class="far fa-calendar-alt"></i> Semester 2 · Minggu 5-8 (8 pertemuan · 16 JP)</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button></div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PANEL 6 : ANALISIS DATA -->
+    <!-- PANEL 6 : ANALISIS DATA (URAIAN DIPERPANJANG) -->
     <!-- ============================================================ -->
     <div id="panel6" class="panel">
         <div class="modul">
             <h2><i class="fas fa-chart-line"></i> 6. Analisis Data <span class="badge badge-s2">Semester 2</span></h2>
             <div class="sub">Minggu 9-12 · 8 pertemuan (16 JP) · Praktik, Proyek</div>
-
-            <div class="semester-info" style="background:#fffbeb;border-color:#fcd34d;">
-                <i class="fas fa-info-circle" style="color:#92400e;"></i> <b style="color:#92400e;">Semester 2 (22 minggu):</b> Elemen 4-6 · Alokasi: Elemen 4 (4 minggu), Elemen 5 (4 minggu), Elemen 6 (4 minggu) + Cadangan/Proyek (10 minggu)
-            </div>
-
-            <div class="alokasi-waktu">
-                <i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)
-            </div>
+            <div class="semester-info" style="background:#fffbeb;border-color:#fcd34d;"><i class="fas fa-info-circle" style="color:#92400e;"></i> <b style="color:#92400e;">Semester 2 (22 minggu):</b> Elemen 4-6 · Alokasi: Elemen 4 (4 minggu), Elemen 5 (4 minggu), Elemen 6 (4 minggu) + Cadangan/Proyek (10 minggu)</div>
+            <div class="alokasi-waktu"><i class="far fa-calendar-alt"></i> <b>Alokasi Waktu:</b> 4 minggu × 2 JP = 8 pertemuan (16 JP)</div>
 
             <div class="materi-detail">
                 <h4 style="color:#1e4f8a;margin-bottom:0.5rem;"><i class="fas fa-book-open"></i> Uraian Materi</h4>
 
                 <p><strong>A. Pengertian Analisis Data</strong></p>
-                <p>Analisis data adalah proses mengumpulkan, membersihkan, mengolah, dan menyajikan data untuk pengambilan keputusan.</p>
+                <p>Analisis data adalah proses mengumpulkan, membersihkan, mengolah, dan menyajikan data untuk menghasilkan informasi yang berguna dalam pengambilan keputusan. Analisis data menjadi semakin penting di era digital karena hampir semua aspek kehidupan menghasilkan data yang dapat dianalisis untuk memahami perilaku, memprediksi tren, dan mengembangkan solusi yang lebih baik. Dengan analisis data, kita dapat mengubah data mentah menjadi wawasan yang berharga.</p>
 
-                <h5>B. Hierarki DIKW</h5>
+                <h5>B. Hierarki DIKW (Data-Information-Knowledge-Wisdom)</h5>
                 <ul>
-                    <li><strong>Data:</strong> Fakta mentah.</li>
-                    <li><strong>Informasi:</strong> Data diolah.</li>
-                    <li><strong>Pengetahuan:</strong> Informasi + pengalaman.</li>
-                    <li><strong>Wawasan:</strong> Pola & tren.</li>
-                    <li><strong>Kebijaksanaan:</strong> Keputusan berdasarkan wawasan.</li>
+                    <li><strong>Data:</strong> Fakta mentah yang belum diolah dan belum memiliki makna. Contoh: angka 85, 90, 78.</li>
+                    <li><strong>Informasi:</strong> Data yang sudah diolah dan memiliki makna. Contoh: rata-rata nilai kelas adalah 84.</li>
+                    <li><strong>Pengetahuan:</strong> Informasi yang dikombinasikan dengan pengalaman dan konteks. Contoh: siswa dengan nilai di atas 80 cenderung lulus ujian.</li>
+                    <li><strong>Wawasan:</strong> Kemampuan melihat pola, tren, dan hubungan yang tidak terlihat sebelumnya. Contoh: nilai matematika siswa lebih rendah dibandingkan IPA, sehingga perlu intervensi khusus.</li>
+                    <li><strong>Kebijaksanaan:</strong> Kemampuan mengambil keputusan yang tepat berdasarkan wawasan. Contoh: perlu menambah jam les matematika untuk meningkatkan nilai siswa.</li>
                 </ul>
 
                 <h5>C. Tahapan Analisis Data</h5>
                 <ul>
-                    <li>Pengumpulan Data</li>
-                    <li>Pembersihan Data</li>
-                    <li>Pengolahan Data (spreadsheet)</li>
-                    <li>Visualisasi Data (grafik)</li>
-                    <li>Interpretasi & Rekomendasi</li>
+                    <li><strong>Pengumpulan Data:</strong> Mengumpulkan data dari berbagai sumber seperti survei, observasi, wawancara, atau database yang sudah ada.</li>
+                    <li><strong>Pembersihan Data:</strong> Mengidentifikasi dan memperbaiki data yang rusak, tidak lengkap, atau tidak akurat. "Garbage in, garbage out" — jika data yang masuk buruk, hasil analisis juga buruk.</li>
+                    <li><strong>Pengolahan Data:</strong> Agregasi, kalkulasi, transformasi data menggunakan spreadsheet atau tools statistik.</li>
+                    <li><strong>Visualisasi Data:</strong> Menyajikan data dalam bentuk grafik (batang, garis, pie, scatter) untuk memudahkan interpretasi.</li>
+                    <li><strong>Interpretasi & Rekomendasi:</strong> Menarik kesimpulan dan memberikan rekomendasi berdasarkan data.</li>
+                </ul>
+
+                <h5>D. Contoh Penerapan Analisis Data</h5>
+                <p><strong>Kasus: Analisis Nilai Siswa</strong></p>
+                <ul>
+                    <li><strong>Data:</strong> Nilai ulangan matematika, IPA, dan Bahasa Indonesia dari 30 siswa.</li>
+                    <li><strong>Informasi:</strong> Rata-rata nilai matematika 75, IPA 80, Bahasa Indonesia 85.</li>
+                    <li><strong>Pengetahuan:</strong> Siswa yang memiliki nilai matematika di bawah 70 cenderung juga rendah di IPA.</li>
+                    <li><strong>Wawasan:</strong> Terdapat korelasi positif antara nilai matematika dan IPA, tetapi tidak dengan Bahasa Indonesia.</li>
+                    <li><strong>Kebijaksanaan:</strong> Perlu memberikan bimbingan tambahan matematika dan IPA secara terintegrasi.</li>
                 </ul>
             </div>
 
@@ -909,35 +645,27 @@
 
             <div class="card"><h4>Rubrik</h4><table class="rubrik-table"><tr><th>Indikator</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Pengolahan data</td><td>Kurang</td><td>Cukup</td><td>Baik</td><td>Sangat rapi</td></tr><tr><td>Visualisasi & insight</td><td>Tidak ada</td><td>Kurang jelas</td><td>Jelas</td><td>Informatif & menarik</td></tr></table></div>
 
-            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana data dapat membantu memprediksi tren penjualan?"</div>
+            <div class="soal"><i class="fas fa-question-circle"></i> <strong>Soal Pemantik:</strong> "Bagaimana data dapat membantu memprediksi tren penjualan di toko? Berikan contoh analisis sederhana!"</div>
 
             <div class="dropdown-wrapper mt-1">
                 <h4 style="font-size:0.95rem;margin-bottom:0.5rem;color:#1e293b;"><i class="fas fa-tasks"></i> Asesmen & Lembar Kerja</h4>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-formatif">Formatif</span> Tes Formatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Kelompok:</strong> Bersihkan dataset sederhana (5 baris data dengan missing value).</div>
-                        <div class="soal-item"><strong>Mandiri:</strong> Buat grafik dari data nilai kelas (minimal 10 data).</div>
+                        <div class="soal-item"><strong>Kelompok:</strong> Bersihkan dataset sederhana (5 baris data dengan missing value).<div class="jawaban">💡 Kunci: Identifikasi missing value, isi dengan rata-rata atau median.</div></div>
+                        <div class="soal-item"><strong>Mandiri:</strong> Buat grafik dari data nilai kelas (minimal 10 data).<div class="jawaban">💡 Kunci: Grafik batang atau garis dengan label yang jelas.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-sumatif">Sumatif</span> Tes Sumatif</span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
-                        <div class="soal-item"><strong>Proyek Kelompok:</strong> Proyek analisis data (data cuaca, nilai, penjualan) dengan laporan lengkap.</div>
-                        <div class="soal-item"><strong>Mandiri:</strong> Laporan analisis (latar belakang, metode, hasil, rekomendasi).</div>
+                        <div class="soal-item"><strong>Soal 1 (Mandiri):</strong> Jelaskan perbedaan antara data, informasi, pengetahuan, dan wawasan! Berikan contoh masing-masing!<div class="jawaban">💡 Kunci: Data (85,90,78), Informasi (rata-rata 84), Pengetahuan (nilai >80 lulus), Wawasan (matematika lebih rendah).</div></div>
+                        <div class="soal-item"><strong>Soal 2 (Mandiri):</strong> Sebutkan 5 tahapan dalam analisis data dan jelaskan secara singkat!<div class="jawaban">💡 Kunci: (1) Pengumpulan data, (2) Pembersihan data, (3) Pengolahan data, (4) Visualisasi, (5) Interpretasi & rekomendasi.</div></div>
+                        <div class="soal-item"><strong>Soal 3 (Proyek Kelompok):</strong> Proyek analisis data (data cuaca, nilai, penjualan) dengan laporan lengkap.<div class="jawaban">💡 Kunci: Laporan memuat latar belakang, metode, hasil, visualisasi, dan rekomendasi.</div></div>
                     </div>
                 </div>
                 <div class="dropdown-item">
-                    <div class="dropdown-header" onclick="toggleDropdown(this)">
-                        <span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                    <div class="dropdown-header" onclick="toggleDropdown(this)"><span><span class="tag tag-lkpd">LKPD</span> Lembar Kerja Peserta Didik <span style="font-size:0.7rem;color:#64748b;font-weight:400;">(klik untuk lihat detail)</span></span><i class="fas fa-chevron-down"></i></div>
                     <div class="dropdown-body">
                         <div class="lkpd-item"><strong>LKPD 6.1</strong> — Pengenalan dataset & pengumpulan data.<div class="format">📄 Lembar identifikasi 5 sumber data dan cara mengumpulkannya.</div></div>
                         <div class="lkpd-item"><strong>LKPD 6.2</strong> — Pembersihan & pengolahan data (Google Sheets).<div class="format">📄 Lembar praktik membersihkan data dengan spreadsheet.</div></div>
@@ -946,10 +674,7 @@
                 </div>
             </div>
 
-            <div class="flex mt-2">
-                <span class="waktu"><i class="far fa-calendar-alt"></i> Semester 2 · Minggu 9-12 (8 pertemuan · 16 JP)</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button>
-            </div>
+            <div class="flex mt-2"><span class="waktu"><i class="far fa-calendar-alt"></i> Semester 2 · Minggu 9-12 (8 pertemuan · 16 JP)</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak</button></div>
         </div>
     </div>
 
@@ -968,105 +693,31 @@
                 <span style="background:#dbeafe;padding:0.1rem 0.7rem;border-radius:40px;font-size:0.7rem;font-weight:600;color:#1e4f8a;">Total: 92 JP</span>
             </div>
 
-            <div style="background:#d1fae5;padding:0.5rem 1rem;border-radius:10px;margin-bottom:1rem;">
-                <b><i class="fas fa-book-open"></i> Semester 1 (24 minggu):</b> Elemen 1-3 · 12 minggu (24 JP) + Cadangan/Proyek 12 minggu (24 JP)
-            </div>
-
+            <div style="background:#d1fae5;padding:0.5rem 1rem;border-radius:10px;margin-bottom:1rem;"><b><i class="fas fa-book-open"></i> Semester 1 (24 minggu):</b> Elemen 1-3 · 12 minggu (24 JP) + Cadangan/Proyek 12 minggu (24 JP)</div>
             <div class="cp-grid">
-                <div class="cp-item">
-                    <div class="name"><i class="fas fa-brain"></i> 1. Berpikir Komputasional <span class="badge badge-s1">4 minggu · 8 JP</span></div>
-                    <div class="cptext"><b>CP:</b> Memecah masalah kompleks, mengenali pola, membuat abstraksi, menyusun algoritma.</div>
-                    <ul class="atp">
-                        <li><strong>TP.1.1</strong> Menjelaskan konsep dekomposisi.</li>
-                        <li><strong>TP.1.2</strong> Mengidentifikasi pola pada data.</li>
-                        <li><strong>TP.1.3</strong> Membuat abstraksi.</li>
-                        <li><strong>TP.1.4</strong> Menyusun algoritma pseudocode.</li>
-                        <li><strong>TP.1.5</strong> Menggambar flowchart.</li>
-                        <li><strong>TP.1.6</strong> Menerapkan 4 pilar pada studi kasus.</li>
-                    </ul>
-                </div>
-                <div class="cp-item">
-                    <div class="name"><i class="fas fa-laptop"></i> 2. Literasi Digital <span class="badge badge-s1">4 minggu · 8 JP</span></div>
-                    <div class="cptext"><b>CP:</b> Menguasai perangkat, hak digital, warga digital etis.</div>
-                    <ul class="atp">
-                        <li><strong>TP.2.1</strong> Mengidentifikasi perangkat & aplikasi.</li>
-                        <li><strong>TP.2.2</strong> Menjelaskan hak digital & privasi.</li>
-                        <li><strong>TP.2.3</strong> Mempraktikkan keamanan data.</li>
-                        <li><strong>TP.2.4</strong> Menganalisis kasus pelanggaran etika.</li>
-                        <li><strong>TP.2.5</strong> Menyusun panduan etis berdigital.</li>
-                    </ul>
-                </div>
-                <div class="cp-item">
-                    <div class="name"><i class="fas fa-scale-balanced"></i> 3. Etika & Literasi AI <span class="badge badge-s1">4 minggu · 8 JP</span></div>
-                    <div class="cptext"><b>CP:</b> Memahami AI, bias algoritma, akuntabilitas.</div>
-                    <ul class="atp">
-                        <li><strong>TP.3.1</strong> Menjelaskan definisi & jenis AI.</li>
-                        <li><strong>TP.3.2</strong> Menganalisis cara kerja AI.</li>
-                        <li><strong>TP.3.3</strong> Mengidentifikasi bias dalam AI.</li>
-                        <li><strong>TP.3.4</strong> Mendiskusikan transparansi & akuntabilitas.</li>
-                        <li><strong>TP.3.5</strong> Menyusun rekomendasi etis.</li>
-                    </ul>
-                </div>
+                <div class="cp-item"><div class="name"><i class="fas fa-brain"></i> 1. Berpikir Komputasional <span class="badge badge-s1">4 minggu · 8 JP</span></div><div class="cptext"><b>CP:</b> Memecah masalah, pola, abstraksi, algoritma.</div><ul class="atp"><li><strong>TP.1.1</strong> Dekomposisi.</li><li><strong>TP.1.2</strong> Pola pada data.</li><li><strong>TP.1.3</strong> Abstraksi.</li><li><strong>TP.1.4</strong> Pseudocode.</li><li><strong>TP.1.5</strong> Flowchart.</li><li><strong>TP.1.6</strong> Implementasi 4 pilar.</li></ul></div>
+                <div class="cp-item"><div class="name"><i class="fas fa-laptop"></i> 2. Literasi Digital <span class="badge badge-s1">4 minggu · 8 JP</span></div><div class="cptext"><b>CP:</b> Perangkat, hak digital, warga digital etis.</div><ul class="atp"><li><strong>TP.2.1</strong> Identifikasi perangkat.</li><li><strong>TP.2.2</strong> Hak digital & privasi.</li><li><strong>TP.2.3</strong> Keamanan data.</li><li><strong>TP.2.4</strong> Analisis kasus.</li><li><strong>TP.2.5</strong> Panduan etis.</li></ul></div>
+                <div class="cp-item"><div class="name"><i class="fas fa-scale-balanced"></i> 3. Etika & Literasi AI <span class="badge badge-s1">4 minggu · 8 JP</span></div><div class="cptext"><b>CP:</b> AI, bias algoritma, akuntabilitas.</div><ul class="atp"><li><strong>TP.3.1</strong> Definisi & jenis AI.</li><li><strong>TP.3.2</strong> Cara kerja AI.</li><li><strong>TP.3.3</strong> Bias dalam AI.</li><li><strong>TP.3.4</strong> Transparansi & akuntabilitas.</li><li><strong>TP.3.5</strong> Rekomendasi etis.</li></ul></div>
             </div>
 
-            <div style="background:#fffbeb;padding:0.5rem 1rem;border-radius:10px;margin:1rem 0;border:1px solid #fcd34d;">
-                <b style="color:#92400e;"><i class="fas fa-book-open" style="color:#92400e;"></i> Semester 2 (22 minggu):</b> <span style="color:#92400e;">Elemen 4-6 · 12 minggu (24 JP) + Cadangan/Proyek 10 minggu (20 JP)</span>
-            </div>
-
+            <div style="background:#fffbeb;padding:0.5rem 1rem;border-radius:10px;margin:1rem 0;border:1px solid #fcd34d;"><b style="color:#92400e;"><i class="fas fa-book-open" style="color:#92400e;"></i> Semester 2 (22 minggu):</b> <span style="color:#92400e;">Elemen 4-6 · 12 minggu (24 JP) + Cadangan/Proyek 10 minggu (20 JP)</span></div>
             <div class="cp-grid">
-                <div class="cp-item">
-                    <div class="name"><i class="fas fa-wand-magic-sparkles"></i> 4. Pemanfaatan & Pengembangan AI <span class="badge badge-s2">4 minggu · 8 JP</span></div>
-                    <div class="cptext"><b>CP:</b> Memanfaatkan AI, mengembangkan sistem AI sederhana.</div>
-                    <ul class="atp">
-                        <li><strong>TP.4.1</strong> Menggunakan chatbot & asisten.</li>
-                        <li><strong>TP.4.2</strong> Memahami sistem rekomendasi.</li>
-                        <li><strong>TP.4.3</strong> Mengeksplorasi AI generatif.</li>
-                        <li><strong>TP.4.4</strong> Merancang prototipe solusi AI.</li>
-                        <li><strong>TP.4.5</strong> Mempresentasikan proyek AI.</li>
-                    </ul>
-                </div>
-                <div class="cp-item">
-                    <div class="name"><i class="fas fa-code"></i> 5. Algoritma & Pemrograman <span class="badge badge-s2">4 minggu · 8 JP</span></div>
-                    <div class="cptext"><b>CP:</b> Logika program, Python, aplikasi sederhana.</div>
-                    <ul class="atp">
-                        <li><strong>TP.5.1</strong> Menulis pseudocode.</li>
-                        <li><strong>TP.5.2</strong> Menggambar flowchart.</li>
-                        <li><strong>TP.5.3</strong> Menggunakan variabel & tipe data.</li>
-                        <li><strong>TP.5.4</strong> Menerapkan percabangan (if-else).</li>
-                        <li><strong>TP.5.5</strong> Menerapkan perulangan (for, while).</li>
-                        <li><strong>TP.5.6</strong> Membuat program sederhana.</li>
-                    </ul>
-                </div>
-                <div class="cp-item">
-                    <div class="name"><i class="fas fa-chart-line"></i> 6. Analisis Data <span class="badge badge-s2">4 minggu · 8 JP</span></div>
-                    <div class="cptext"><b>CP:</b> Mengumpulkan, membersihkan, mengolah data, DIKW.</div>
-                    <ul class="atp">
-                        <li><strong>TP.6.1</strong> Mengumpulkan data.</li>
-                        <li><strong>TP.6.2</strong> Membersihkan data.</li>
-                        <li><strong>TP.6.3</strong> Mengolah data dengan spreadsheet.</li>
-                        <li><strong>TP.6.4</strong> Membuat visualisasi data.</li>
-                        <li><strong>TP.6.5</strong> Menarik kesimpulan & rekomendasi.</li>
-                    </ul>
-                </div>
+                <div class="cp-item"><div class="name"><i class="fas fa-wand-magic-sparkles"></i> 4. Pemanfaatan & Pengembangan AI <span class="badge badge-s2">4 minggu · 8 JP</span></div><div class="cptext"><b>CP:</b> Memanfaatkan & mengembangkan AI.</div><ul class="atp"><li><strong>TP.4.1</strong> Chatbot & asisten.</li><li><strong>TP.4.2</strong> Sistem rekomendasi.</li><li><strong>TP.4.3</strong> AI generatif.</li><li><strong>TP.4.4</strong> Prototipe solusi AI.</li><li><strong>TP.4.5</strong> Presentasi proyek.</li></ul></div>
+                <div class="cp-item"><div class="name"><i class="fas fa-code"></i> 5. Algoritma & Pemrograman <span class="badge badge-s2">4 minggu · 8 JP</span></div><div class="cptext"><b>CP:</b> Logika program, Python.</div><ul class="atp"><li><strong>TP.5.1</strong> Pseudocode.</li><li><strong>TP.5.2</strong> Flowchart.</li><li><strong>TP.5.3</strong> Variabel & tipe data.</li><li><strong>TP.5.4</strong> Percabangan.</li><li><strong>TP.5.5</strong> Perulangan.</li><li><strong>TP.5.6</strong> Program sederhana.</li></ul></div>
+                <div class="cp-item"><div class="name"><i class="fas fa-chart-line"></i> 6. Analisis Data <span class="badge badge-s2">4 minggu · 8 JP</span></div><div class="cptext"><b>CP:</b> Kumpul, bersihkan, olah data, DIKW.</div><ul class="atp"><li><strong>TP.6.1</strong> Mengumpulkan data.</li><li><strong>TP.6.2</strong> Membersihkan data.</li><li><strong>TP.6.3</strong> Mengolah dengan spreadsheet.</li><li><strong>TP.6.4</strong> Visualisasi data.</li><li><strong>TP.6.5</strong> Kesimpulan & rekomendasi.</li></ul></div>
             </div>
 
             <div class="card mt-2">
                 <h4><i class="fas fa-table"></i> Ringkasan Capaian Pembelajaran per Elemen</h4>
-                <table class="rubrik-table">
-                    <tr><th>No</th><th>Semester</th><th>Elemen</th><th>Alokasi</th><th>Capaian Pembelajaran</th></tr>
-                    <tr><td>1</td><td><span class="badge badge-s1">SMT 1</span></td><td>Berpikir Komputasional</td><td>4 minggu (8 JP)</td><td>Memecah masalah, pola, abstraksi, algoritma</td></tr>
-                    <tr><td>2</td><td><span class="badge badge-s1">SMT 1</span></td><td>Literasi Digital</td><td>4 minggu (8 JP)</td><td>Perangkat, hak digital, warga etis</td></tr>
-                    <tr><td>3</td><td><span class="badge badge-s1">SMT 1</span></td><td>Etika & Literasi AI</td><td>4 minggu (8 JP)</td><td>AI, bias, akuntabilitas</td></tr>
-                    <tr><td>4</td><td><span class="badge badge-s2">SMT 2</span></td><td>Pemanfaatan & Pengembangan AI</td><td>4 minggu (8 JP)</td><td>Memanfaatkan & mengembangkan AI</td></tr>
-                    <tr><td>5</td><td><span class="badge badge-s2">SMT 2</span></td><td>Algoritma & Pemrograman</td><td>4 minggu (8 JP)</td><td>Logika program, Python</td></tr>
-                    <tr><td>6</td><td><span class="badge badge-s2">SMT 2</span></td><td>Analisis Data</td><td>4 minggu (8 JP)</td><td>Kumpul, bersihkan, olah data, DIKW</td></tr>
-                </table>
+                <table class="rubrik-table"><tr><th>No</th><th>Semester</th><th>Elemen</th><th>Alokasi</th><th>Capaian Pembelajaran</th></tr>
+                <tr><td>1</td><td><span class="badge badge-s1">SMT 1</span></td><td>Berpikir Komputasional</td><td>4 minggu (8 JP)</td><td>Memecah masalah, pola, abstraksi, algoritma</td></tr>
+                <tr><td>2</td><td><span class="badge badge-s1">SMT 1</span></td><td>Literasi Digital</td><td>4 minggu (8 JP)</td><td>Perangkat, hak digital, warga etis</td></tr>
+                <tr><td>3</td><td><span class="badge badge-s1">SMT 1</span></td><td>Etika & Literasi AI</td><td>4 minggu (8 JP)</td><td>AI, bias, akuntabilitas</td></tr>
+                <tr><td>4</td><td><span class="badge badge-s2">SMT 2</span></td><td>Pemanfaatan & Pengembangan AI</td><td>4 minggu (8 JP)</td><td>Memanfaatkan & mengembangkan AI</td></tr>
+                <tr><td>5</td><td><span class="badge badge-s2">SMT 2</span></td><td>Algoritma & Pemrograman</td><td>4 minggu (8 JP)</td><td>Logika program, Python</td></tr>
+                <tr><td>6</td><td><span class="badge badge-s2">SMT 2</span></td><td>Analisis Data</td><td>4 minggu (8 JP)</td><td>Kumpul, bersihkan, olah data, DIKW</td></tr></table>
             </div>
-
-            <div class="flex mt-2">
-                <span><i class="fas fa-info-circle"></i> Total 6 Elemen · 46 Minggu · 92 JP</span>
-                <button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak Semua</button>
-            </div>
+            <div class="flex mt-2"><span><i class="fas fa-info-circle"></i> Total 6 Elemen · 46 Minggu · 92 JP</span><button class="btn-pdf" onclick="window.print()"><i class="fas fa-file-pdf"></i> Cetak Semua</button></div>
         </div>
     </div>
 
@@ -1084,55 +735,51 @@
 </div>
 
 <script>
-    // NAVIGASI
     const navLinks = document.querySelectorAll('#navMenu a[data-panel]');
-    const panels = {
-        panel1: document.getElementById('panel1'),
-        panel2: document.getElementById('panel2'),
-        panel3: document.getElementById('panel3'),
-        panel4: document.getElementById('panel4'),
-        panel5: document.getElementById('panel5'),
-        panel6: document.getElementById('panel6'),
-        'panel-cp': document.getElementById('panel-cp')
-    };
+    const panels = { panel1: document.getElementById('panel1'), panel2: document.getElementById('panel2'), panel3: document.getElementById('panel3'), panel4: document.getElementById('panel4'), panel5: document.getElementById('panel5'), panel6: document.getElementById('panel6'), 'panel-cp': document.getElementById('panel-cp') };
+    navLinks.forEach(link => { link.addEventListener('click', function(e) { e.preventDefault(); navLinks.forEach(l => l.classList.remove('active')); this.classList.add('active'); Object.values(panels).forEach(p => p.classList.remove('active')); const target = this.dataset.panel; if (panels[target]) panels[target].classList.add('active'); }); });
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            Object.values(panels).forEach(p => p.classList.remove('active'));
-            const target = this.dataset.panel;
-            if (panels[target]) panels[target].classList.add('active');
-        });
-    });
-
-    // DROPDOWN TOGGLE
     function toggleDropdown(headerElement) {
         const body = headerElement.nextElementSibling;
         const isOpen = body.classList.contains('open');
-        
         const wrapper = headerElement.closest('.dropdown-wrapper');
         const allHeaders = wrapper.querySelectorAll('.dropdown-header');
         const allBodies = wrapper.querySelectorAll('.dropdown-body');
-        
         allHeaders.forEach(h => h.classList.remove('active'));
         allBodies.forEach(b => b.classList.remove('open'));
-        
-        if (!isOpen) {
-            headerElement.classList.add('active');
-            body.classList.add('open');
-        }
+        if (!isOpen) { headerElement.classList.add('active'); body.classList.add('open'); }
     }
-
     document.querySelectorAll('.dropdown-wrapper').forEach(wrapper => {
         const firstHeader = wrapper.querySelector('.dropdown-header');
         const firstBody = wrapper.querySelector('.dropdown-body');
-        if (firstHeader && firstBody) {
-            firstHeader.classList.add('active');
-            firstBody.classList.add('open');
-        }
+        if (firstHeader && firstBody) { firstHeader.classList.add('active'); firstBody.classList.add('open'); }
     });
+
+    function unduhLKPD(namaLKPD) {
+        const detailBox = event.target.closest('.lkpd-detail-box');
+        if (!detailBox) { alert('Konten LKPD tidak ditemukan!'); return; }
+        let content = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${namaLKPD}</title><style>body{font-family:'Times New Roman',serif;padding:40px;line-height:1.6;}.header{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:20px;}.header h1{font-size:18pt;margin:0;}.header p{font-size:11pt;margin:3px 0;}table{width:100%;border-collapse:collapse;margin:10px 0;}table th,table td{border:1px solid #000;padding:5px 8px;font-size:11pt;text-align:left;}table th{background:#f0f0f0;}.section{margin:15px 0;}.section-title{font-weight:bold;font-size:12pt;margin-top:15px;border-bottom:1px solid #ccc;padding-bottom:3px;}.answer-box{border:1px dashed #999;padding:10px;min-height:40px;margin:5px 0;}.footer{text-align:center;margin-top:30px;font-size:10pt;border-top:1px solid #ccc;padding-top:10px;}</style></head><body>`;
+        const titleElement = detailBox.querySelector('.lkpd-title');
+        if (titleElement) { content += `<div class="header"><h1>${titleElement.textContent}</h1><p>SMK Widya Karya Purwokerto · NPSN: 20301914</p><p>Mata Pelajaran: Koding & Kecerdasan Artifisial · Fase E</p></div>`; }
+        const sections = detailBox.querySelectorAll('.lkpd-section');
+        sections.forEach(section => {
+            const clone = section.cloneNode(true);
+            const btns = clone.querySelectorAll('.btn-unduh');
+            btns.forEach(b => b.remove());
+            content += clone.innerHTML;
+        });
+        const tables = detailBox.querySelectorAll('.lkpd-table');
+        tables.forEach(table => { content += table.outerHTML; });
+        content += `<div class="footer"><p>${namaLKPD} - SMK Widya Karya Purwokerto</p><p>Dicetak pada: ${new Date().toLocaleDateString('id-ID')}</p></div></body></html>`;
+        const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `${namaLKPD}.html`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+    }
 </script>
 
 </body>
